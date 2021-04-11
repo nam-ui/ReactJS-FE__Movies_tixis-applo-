@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+$font-stack:  Poppins, HelveticaNeue, "Helvetica Neue", sans-serif;
+// * COLOR SCSS
+$primary-color: #fb4226;
+$link-color: #78b144;
+$info-color: #3298dc;
+$success-color: #48c774;
+$warning-color: #ffdd57;
+$danger-color: #ff0033;
+$light-color: #ffffff;
+$dark-color: #000000;
+$dark-color-1: #9b9b9b;
+$dark-color-outline: #dbdbdb;
+// * COLOR-BOX SCSS
+$primary-box-shadow: rgba(0, 209, 178, .25);
+$link-box-shadow: rgba(36, 102, 209, .25);
+$info-box-shadow: rgba(50, 152, 220, .25);
+$success-box-shadow: rgba(72, 199, 116, .25);
+$warning-box-shadow: rgba(255, 221, 87, .25);
+$danger-box-shadow: rgba(241, 70, 104, .25);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+
+@use 'theme/components.scss'
