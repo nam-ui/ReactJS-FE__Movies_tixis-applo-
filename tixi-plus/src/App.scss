@@ -38,4 +38,6 @@ img {
 }
 
 
-@use 'theme/components.scss'
+@import 'theme/components.scss';
+@import 'theme/sass/from.scss';
+
