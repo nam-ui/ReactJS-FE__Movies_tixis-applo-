@@ -12,7 +12,8 @@ export const ADD_MOVIE = gql`
         $rating:  Int  ,
     ) 
     {
-        createMovie( moviesName: $moviesName  ,
+        createMovie( 
+        moviesName: $moviesName  ,
         aliases: $aliases  ,
         trailer: $trailer  ,
         picture: $picture  ,

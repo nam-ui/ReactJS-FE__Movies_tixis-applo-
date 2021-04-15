@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+
 $font-stack:  Poppins, HelveticaNeue, "Helvetica Neue", sans-serif;
 // * COLOR SCSS
 $primary-color: #fb4226;
@@ -29,9 +32,7 @@ ul {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-}
+
 
 img {
   width: 100%;
@@ -40,4 +41,9 @@ img {
 
 @import 'theme/components.scss';
 @import 'theme/sass/from.scss';
+@import 'theme/sass/movie.scss';
+@import 'theme/sass/font.scss';
+@import 'theme/sass/container.scss';
+
+
 

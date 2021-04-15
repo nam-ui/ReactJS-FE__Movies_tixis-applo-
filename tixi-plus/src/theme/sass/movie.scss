@@ -1,0 +1,236 @@
+// ? CSS movie
+@import 'variable.scss';
+
+body {
+    background-color: $dark;
+}
+
+// * MOVIE movie-box
+.movie-box {
+    width: 100%;
+    margin-right: 30px;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    color: $yellow;
+    .movie-poster {
+        border-radius: 5px;
+        overflow: hidden;
+        display: block;
+        >a {
+            width: 100%;
+            height: 100%;
+            >img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .movie-content {
+        margin-top: 10px;
+        .top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            span {
+                font-weight: 700;
+                font-size: 14px;
+            }
+        }
+        .bottom {
+            >ul {
+                display: flex;
+                justify-content: space-between;
+            >li{
+               > span:first-child{
+                padding-right: 10px;
+               }
+            }
+            }
+            .quality {
+                border: 1px solid $white;
+                padding: 5px 10px;
+                font-size: 11px;
+                font-weight: 800;
+            }
+            span {
+                font-weight: 600;
+                font-size: 13px;
+            }
+        }
+    }
+
+}
+//? How to hover box - img
+.box-image-master{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    display: inline-block;
+    .image-master{
+        border-radius: 5px;
+    }
+    .box-master-hover-setting{
+        padding: 0;
+        display:none;
+    }
+}
+.box-image-master:hover{
+    width: 100%;height: 100%;
+}
+.box-image-master:hover  .box-master-hover-setting  , .box-image-master:hover .box-master-hover-mark {
+    display: inline-block;
+}
+.master-movie-a{
+    color: #d5d5d5;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 10px auto;
+}
+.master-movie-rel{
+    display: block;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #9d9b9b;
+}
+.master-movie-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+.master-movie-btn>a:hover  {
+    background-color:$yellow;
+    color: $dark;
+}
+.master-movie-btn > a{
+    color: $white;
+    border-radius: 25px;
+    border : 2px solid $yellow;
+    padding: 8px 16px;
+    text-align: center;
+    margin: 10px ;
+    font-weight: 700;
+    display: grid;
+    align-items: center;
+    text-decoration: none;
+}
+.box-master-hover-mark{
+    position: absolute;
+    display: none;
+    background-color:#000000;
+    width:100%;
+    height: 100%;
+    top: -0%;
+    left: 0%;
+    opacity: 0.7;
+}
+
+// ?POPUP movie
+.popup-movie-detail-master{
+    overflow: hidden;
+    background-image: url(../movie_details_bg.jpg) ;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 80%;
+    max-width:1300px;
+    position: absolute; 
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    padding:20px;
+    border-radius:10px;
+    display: flex;
+    justify-content:flex-start;
+    gap: 50px;
+    .popup-movie-img{
+        height: 100%;
+        display: inline-block;
+        >img{
+            display: inline-block;
+            width: 100%;
+            border-radius: 5px;   
+            max-width: 303px;
+        }
+    }
+    .popup-movie-form{
+        padding: 0 20px 0 0;
+        width: 80%;
+    }
+    input{
+        border:none;
+        background-color: transparent;
+        color: $white;
+        width: auto;
+    }
+    .movie-aliases , .movie-moviesName{
+        border: 2px solid transparent;
+        color: $yellow;
+        font-weight : 700;
+        font-size: 26px;
+        padding: 8px 20px;
+    } .movie-aliases:focus , .movie-moviesName:focus {
+        border: 2px solid $yellow;
+        border-radius: 5px;
+    }
+    .movie-moviesName{
+        color: $white;
+        font-size: 50px;
+    }
+    .movie-described{
+        padding: 8px 20px;
+        border: 2px solid transparent;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 26px;
+        color: #bcbcbc;
+        background-color:transparent;
+        outline: none;
+    }
+    .movie-described:focus{
+        border: 2px solid $yellow;
+    }
+    .movie-submit{
+        color: $dark;
+        background-color: $yellow;
+        padding: 20px 35px;
+        font-size: 15px;   
+        display: inline-block;
+        max-width: 200px;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+    .movie-submit:hover{
+        color: $dark;
+        background-color: white;
+    }
+}
+.popup-create-master-movie{
+    background-image: url(../movie_details_bg.jpg) ;
+    position: absolute;
+    width: 70%;
+    max-width:1300px;
+    padding: 10px;
+    top:-50%;
+    left: 50%;
+    transform: translate(-50%,50%);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+   >form{
+       width: 100%;
+       padding: 10px;
+       >input{
+           margin-bottom: 10px;
+           width: 70%;
+           padding : 8px 10px;
+       }
+   }
+}
