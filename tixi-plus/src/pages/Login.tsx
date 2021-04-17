@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { IoMdClose } from 'react-icons/io';
 import Logo from '../theme/img/logo.png'
 
 
@@ -12,8 +14,9 @@ function Login() {
         <React.Fragment>
             <div className="body-sign-in">
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="exit-login"> <Link to="/"><IoMdClose fontSize="40px" color="#23324c" style={{ backgroundColor: "#081630", padding: "7px", borderRadius: "50px", boxShadow: "0 2px 10px 0 rgb(0 0 0 / 50%)" }} /></Link>  </div>
                     <h1 className="logo-login">
-                        <img src={Logo} alt="Logo"/>
+                        <Link to="/" > <img src={Logo} alt="Logo" /> </Link>
                         <p className="fs-20 color-white ">  Thế Giới Phim Trên Đầu Ngón Tay </p>
                     </h1>
                     <h3>Đăng nhập để được nhiều ưu đãi, mua vé và bảo mật thông tin!</h3>

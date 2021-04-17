@@ -2,6 +2,7 @@
 
 
 
+
 $font-stack: Poppins,
 HelveticaNeue,
 "Helvetica Neue",
@@ -69,6 +70,13 @@ img {
     z-index: 1;
     box-shadow: 0 2px 4px rgba(0, 0, 10,10%), 0 8px 16px rgba(0, 0, 10,10%), ;
     border-radius: 6px;
+    .exit-login{
+      border-radius: 50px;
+      position: absolute;
+      padding: 5px;
+      top: -20px;
+      right: -20px;
+    }
     input {
       width: 100%;
       border-radius: 6px;
@@ -84,3 +92,5 @@ img {
     }
   }
 }
+
+@import 'theme/sass/screenphone.scss';
