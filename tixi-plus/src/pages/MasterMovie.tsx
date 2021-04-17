@@ -11,16 +11,22 @@ function MasterMovie() {
     const [isOpenCreateMovie, setIsOpenCreateMovie] = React.useState(false)
     const [isOpenPopupUpdateMovie, setIsOpenPopupUpdateMovie] = React.useState(false)
     const [isOpenMovie, setIsOpenMovie] = React.useState(true)
+    const [idFindMovie, setIdFindMovie] = React.useState("")
+    console.log(isOpenMovie, isOpenCreateMovie);
+
     return (
         <React.Fragment>
             <div id="container-relative">
                 <CssBaseline />
-                <MoviesMaster onClickOpenDetailsRoom={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
-                {isOpenCreateMovie === true && <FormCreateMovie />}
+                <a id="btn-open-popup-movie-create" href="#" onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </a>
+                <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
+                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} />}
                 {isOpenPopupUpdateMovie === true && <PopupMovieMaster onClickOpenDetailsRoom={(statusOpen) => {
                     setIsOpenPopupUpdateMovie(statusOpen)
                     setIsOpenMovie(false)
-                }} />}
+                }}
+                    idPropMovie={idFindMovie}
+                />}
             </div>
         </React.Fragment>
     )

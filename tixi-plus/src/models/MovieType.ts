@@ -1,14 +1,14 @@
 export interface MovieTypeCreate {
-    moviesName: String,
-    aliases: String,
-    trailer: String,
-    picture: String,
-    described: String,
-    groupCode: String,
+    moviesName: string,
+    aliases: string,
+    trailer: string,
+    picture: string,
+    described: string,
+    groupCode: string,
     launchDate: Date,
-    rating: Number,
+    rating: number,
 }
 export interface MovieType extends MovieTypeCreate {
-    id: String,
+    id: string,
     createdAt: Date
 }

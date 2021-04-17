@@ -7,7 +7,7 @@ import { MovieTypeCreate } from '../../models/MovieType'
 import { ADD_MOVIE } from '../../graphql/Movie';
 import { RiFullscreenExitLine } from 'react-icons/all'
 // ANCHOR files
-function FromMovie() {
+function FromMovie(props: Props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // TODO event create
     const [addMovie, { loading, error }] = useMutation(ADD_MOVIE);
@@ -51,12 +51,15 @@ function FromMovie() {
                 </form>
             </div>
             <div className="exit-create-movie-master"  >
-                <RiFullscreenExitLine fontSize="40px" color="white" />
+                <RiFullscreenExitLine fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
             </div>
         </React.Fragment>
     )
 }
 
-export default FromMovie
+export default FromMovie;
 
+export interface Props {
+    onOpenCreatePopup(event: boolean): void
+}
 

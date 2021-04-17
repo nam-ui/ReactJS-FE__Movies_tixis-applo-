@@ -1,0 +1,95 @@
+@import 'variable.scss';
+header{
+    background-image: url('../img/banner_bg01.jpg');
+    width: 100%;
+    height: 100%;
+    min-height: 900px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    nav{
+        padding: 40px 0;
+        margin:0 auto;
+        width: 100%;
+        max-width: 1300px;
+        color: $white;
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+        .header-logo{
+            width: 100%;height: 100%;
+            a{
+                outline:none;
+                width: 100%;height: 100%;
+                img{
+                    vertical-align: middle;
+                    border-style: none;
+                }
+            }
+        }
+        #header-menu-0{
+           .menu-lv-1{
+               display:flex;
+               align-items: center;
+               li > a{
+                   text-decoration: none;
+                   padding: 0 10px;
+                   font-size: 15px; 
+                   color: #f0f0f0;
+                   font-weight: 800;
+                   padding:20px;
+                   font-family: $font-family-sans-serif;
+                   padding:28px 32px;
+               }
+               li >a:hover{
+                   color: $yellow;
+               }
+           }
+        }
+        #header-feature{
+            display: block!important;
+            >.nav-feature{
+                display:flex;
+                >li{
+                    color: #fff;
+                    font-size: 14px;
+                    padding: 10px 20px;
+                    font-weight: 800;
+                    font-family: $font-family-sans-serif;
+                    display: flex;
+                    align-items: center;
+                    >svg{
+                        font-family: $font-family-sans-serif;
+                    }
+                }
+                li:first-child::after{
+                    content: '|';
+                    margin-left:20px;
+                    display: flex;
+                    align-items: center;
+                    color: $gray;
+                }
+                li:last-child{
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 30px;
+                    border: 2px solid $yellow;
+                    border-radius: 50px;
+                }
+                li:last-child > a {
+                    text-decoration: none;
+                    color: $yellow;
+                }
+                li:last-child:hover > a {
+                    text-decoration: none;
+                    color: $dark;
+                }
+                li:last-child:hover {
+                    border: 2px solid $yellow;
+                    background-color: $yellow;
+                    color: $dark;
+                }
+            }
+        }
+    }
+}

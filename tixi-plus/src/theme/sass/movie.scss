@@ -21,8 +21,14 @@ body {
             width: 100%;
             height: 100%;
             >img {
+                display: block;
                 width: 100%;
-                height: 100%;
+                vertical-align: middle;
+                border-style: none;
+                max-width: 100%;
+                border-radius: 5px;
+                max-width: 100%;
+                border-radius: 5px;
             }
         }
     }
@@ -134,14 +140,14 @@ body {
 // ?POPUP movie
 .popup-movie-detail-master{
     overflow: hidden;
-    background-image: url(../movie_details_bg.jpg) ;
+    background-image: url(../img/movie_details_bg.jpg) ;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 80%;
     max-width:1300px;
     position: absolute; 
-    top: 100%;
+    top: 150%;
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 2;
@@ -177,7 +183,7 @@ body {
         font-size: 26px;
         padding: 8px 20px;
     } .movie-aliases:focus , .movie-moviesName:focus {
-        border: 2px solid $yellow;
+        border-bottom: 2px solid $yellow;
         border-radius: 5px;
     }
     .movie-moviesName{
@@ -213,7 +219,7 @@ body {
     }
 }
 .popup-create-master-movie{
-    background-image: url(../movie_details_bg.jpg) ;
+    background-image: url(../img/movie_details_bg.jpg) ;
     position: absolute;
     width: 70%;
     max-width:1300px;
@@ -233,4 +239,12 @@ body {
            padding : 8px 10px;
        }
    }
+}
+
+#btn-open-popup-movie-create{
+    text-decoration: none;
+    color: $white;
+    border: 2px solid $yellow;
+    padding: 8px 12px;
+    border-radius:5px;
 }
