@@ -2,7 +2,10 @@
 
 
 
-$font-stack:  Poppins, HelveticaNeue, "Helvetica Neue", sans-serif;
+$font-stack: Poppins,
+HelveticaNeue,
+"Helvetica Neue",
+sans-serif;
 // * COLOR SCSS
 $primary-color: #fb4226;
 $link-color: #78b144;
@@ -21,6 +24,7 @@ $info-box-shadow: rgba(50, 152, 220, .25);
 $success-box-shadow: rgba(72, 199, 116, .25);
 $warning-box-shadow: rgba(255, 221, 87, .25);
 $danger-box-shadow: rgba(241, 70, 104, .25);
+
 * {
   margin: 0;
   padding: 0;
@@ -47,23 +51,36 @@ img {
 @import 'theme/sass/pages404.scss';
 
 // TODO SIGN IN
-.body-sign-in{
-  position: relative;
-  width: 100%;height: 100vh;
+.body-sign-in {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
   background-image: url('./theme/img/bg2.jpg');
-    form {
-      border:1px solid red;
+
+  form {
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    height: 500px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 10,10%), 0 8px 16px rgba(0, 0, 10,10%), ;
+    border-radius: 6px;
+    input {
       width: 100%;
-      max-width: 800px;
-      position: relative;
-      top: 0%;
-      left: 0%;
-      padding:50px;
-      transform: translate(50%,50%);
-      input{
-      }
+      border-radius: 6px;
+      border: none;
     }
+    input[type="submit"]{
+      color: $white;
+      background-color: #1877f2; 
+    }
+    input[type="submit"]:hover {
+      color: $white;
+      background-color: #166fe5;
+    }
+  }
 }
-
-
-

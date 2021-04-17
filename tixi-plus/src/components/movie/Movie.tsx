@@ -10,7 +10,7 @@ function Movie(props : Props) {
             <div className={"movie-box"}>
                 <div className={"movie-poster"}>
                     <Link to="/">
-                        <img src={props.Movie.picture} alt="image"  />
+                        <img src={props.Movie.picture}  alt="image"  />
                     </Link>
                 </div>
                 <div className={"movie-content"}>

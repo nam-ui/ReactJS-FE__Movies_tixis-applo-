@@ -1,23 +1,37 @@
 $input-focus-primary : #861403;
 form {
-    display: grid;
-    grid-template: inherit;
-    justify-content: space-between;
-    align-items: center;
-    grid-gap: 10px;
+    border:none;
+    background-image: linear-gradient(to bottom,rgba(20,50,93,.9),rgba(8,22,48,.9));
+    text-align:center;
+    .logo-login{
+        img{
+            width: 209px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        p{
+            padding:0 0 50px 0;
+        }
+    }
+    h3{
+        color: #fff;
+        font-size: 13px;
+    }
     input {
+        margin: 10px 0;
         display: block;
-        padding: 6px 8px;
-        border-radius: 4px;
+        padding: 14px 16px;
         border: 1px solid $primary-color;
         outline: none;
     }
-
     input:focus {
         border-color: $input-focus-primary;
     }
-
     input[type="submit"] {
-        background-color: transparent;
+        font-weight: 700;
+        font-size: 15px;
+    }
+    input[type="submit"]:hover {
+        background-color: yellow;
     }
 }
