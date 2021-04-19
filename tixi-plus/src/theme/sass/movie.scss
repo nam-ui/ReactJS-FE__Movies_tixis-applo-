@@ -219,24 +219,41 @@ body {
     }
 }
 .popup-create-master-movie{
-    background-image: url(../img/movie_details_bg.jpg) ;
+    // background-image: url(../img/movie_details_bg.jpg) ;
+    background-color: white;
     position: absolute;
-    width: 70%;
+    height: 80vh;
+    width: 40%;
     max-width:1300px;
     padding: 10px;
-    top:-50%;
+    top: -80%;
     left: 50%;
     transform: translate(-50%,50%);
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
     z-index: 2;
    >form{
        width: 100%;
        padding: 10px;
+       background-image: none;
+       display: grid;
+       grid-template-columns: 1fr;
        >input{
-           margin-bottom: 10px;
-           width: 70%;
-           padding : 8px 10px;
+           background-image: translate;
+           width: 100%;
+           border-radius: 5px;
+           border:1px solid #dddfe2;
+           display: inline-block;
+           vertical-align: middle;
+       }
+       .described{
+           height: 150px;
+           text-align: left;
+           text-align-last: auto;
+           outline: none;
+           border: 1px solid #ddd;
+           padding: 15px;
+           border-radius: 5px;
        }
    }
 }

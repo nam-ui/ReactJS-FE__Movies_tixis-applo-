@@ -46,6 +46,7 @@ export const moviesQuery = gql`
         launchDate
         groupCode
         createdAt
+        rating  
     }
 }
 `

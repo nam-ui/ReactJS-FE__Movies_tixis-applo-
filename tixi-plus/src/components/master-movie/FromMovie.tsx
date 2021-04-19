@@ -43,7 +43,7 @@ function FromMovie(props: Props) {
                     <input type="text" placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
                     <input type="text" placeholder="Trailer" {...register("trailer", { required: false })} />
                     <input type="text" placeholder="Poster" {...register("picture", { required: true })} />
-                    <input type="text" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />
+                    <textarea placeholder="Nội dung" className="described" {...register("described", { required: true })} />
                     <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
                     <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
                     <input type="number" defaultValue={10} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Grid } from '@material-ui/core'
-import { AiFillLike, FiClock } from 'react-icons/all'
+import { AiTwotoneStar, FiClock } from 'react-icons/all'
 import { MovieType } from '../../models/MovieType'
 
-function Movie(props : Props) {
+function Movie(props: Props) {
     return (
         < Grid item xs={3} >
             <div className={"movie-box"}>
                 <div className={"movie-poster"}>
                     <Link to="/">
-                        <img src={props.Movie.picture}  alt="image"  />
+                        <img src={props.Movie.picture} alt="image" />
                     </Link>
                 </div>
                 <div className={"movie-content"}>
@@ -20,10 +20,10 @@ function Movie(props : Props) {
                     </div>
                     <div className="bottom">
                         <ul>
-                            <li><span className="quality">HD</span></li>
-                            <li>
-                                <span className="duration"><FiClock ></FiClock> 128 min</span>
-                                <span className="rating"><AiFillLike ></AiFillLike>{props.Movie.rating}</span>
+                            <li><span className="quality">C18</span></li>
+                            <li style={{ display: "flex", alignItems: "center" }} >
+                                <span style={{ display: "flex", alignItems: "center" }} className="duration"><FiClock ></FiClock> 128 min</span>
+                                <span style={{ display: "flex", alignItems: "center" }} className="rating"><AiTwotoneStar />{props.Movie.rating}</span>
                             </li>
                         </ul>
                     </div>
