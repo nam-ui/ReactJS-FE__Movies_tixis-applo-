@@ -222,7 +222,6 @@ body {
     // background-image: url(../img/movie_details_bg.jpg) ;
     background-color: white;
     position: absolute;
-    height: 80vh;
     width: 40%;
     max-width:1300px;
     padding: 10px;
@@ -245,6 +244,10 @@ body {
            border:1px solid #dddfe2;
            display: inline-block;
            vertical-align: middle;
+       }>input:focus{
+        border-color: #1877f2;
+        box-shadow: 0 0 0 2px #e7f3ff;
+        caret-color: #1877f2;
        }
        .described{
            height: 150px;
@@ -254,7 +257,14 @@ body {
            border: 1px solid #ddd;
            padding: 15px;
            border-radius: 5px;
+           resize: none;
        }
+       .described:focus{
+        border-color: #1877f2;
+        box-shadow: 0 0 0 2px #e7f3ff;
+        caret-color: #1877f2;
+       }
+      
    }
 }
 
