@@ -62,32 +62,36 @@ header{
                         font-family: $font-family-sans-serif;
                     }
                 }
-                li:first-child::after{
+                >li:first-child::after{
                     content: '|';
                     margin-left:20px;
                     display: flex;
                     align-items: center;
                     color: $gray;
                 }
-                li:last-child{
+                >li:last-child{
                     display: flex;
                     align-items: center;
                     padding: 10px 30px;
                     border: 2px solid $yellow;
                     border-radius: 50px;
+                    position: relative;
                 }
-                li:last-child > a {
+                >li:last-child > a {
                     text-decoration: none;
                     color: $yellow;
                 }
-                li:last-child:hover > a {
+                >li:last-child:hover > a {
                     text-decoration: none;
                     color: $dark;
                 }
-                li:last-child:hover {
+                >li:last-child:hover {
                     border: 2px solid $yellow;
                     background-color: $yellow;
                     color: $dark;
+                }
+                .sign-in-setting-focus:focus-within   .sign-in-setting {
+                   display: inline-block;
                 }
             }
         }

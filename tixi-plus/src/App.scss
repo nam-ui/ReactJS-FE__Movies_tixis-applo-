@@ -94,3 +94,26 @@ img {
 }
 
 @import 'theme/sass/screenphone.scss';
+.sign-in-setting{
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  padding-top: 50px;
+  text-align: center;
+  right: 0;
+  >li>a{
+    width: 100%;
+    margin:10px 0;
+    padding: 8px 10px;
+    display: inline-block;
+    border: 2px solid $yellow;
+    color: $yellow;
+    border-radius:25px;
+    text-decoration: none;
+  }
+  >li>a:hover{
+    background-color: $yellow;
+    color: #000;
+  }
+}

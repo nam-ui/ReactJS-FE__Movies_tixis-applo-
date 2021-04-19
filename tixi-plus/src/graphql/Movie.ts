@@ -115,5 +115,17 @@ export const REMOVE_MOVIE = gql`
 }
 `
 
-
+export const LOGIN = gql`
+    mutation login($username: String! , $password: String!){
+      login(username: $username, password: $password) {
+        user {
+          id
+          username
+          password
+          createdAt
+          role
+        }
+      }
+    }
+`
 

@@ -4,14 +4,28 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Movies from '../components/movie/Movies'
 import { moviesQuery } from '../graphql/Movie'
+import { UserType } from '../models/UserType'
+import { Pagination } from '@material-ui/lab'
+
 function Home() {
+    const [account, setAccount] = React.useState<UserType>({
+        _id: '',
+        password: '',
+        username: '',
+        role: '',
+        createdAt: new Date(Date.UTC(0, 0, 0, 0, 0, 0))
+    })
+    React.useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
+        setAccount(user)
+    }, [])
     const { loading, error, data } = useQuery(moviesQuery)
     if (loading) return <p>Loading...</p>
     if (error) return <p>error...</p>
     return (
         <React.Fragment>
             <header>
-                <Header />
+                <Header user={account} />
                 <div className="header-slider">
                     <h1>Movflx</h1>
                     <h2> Unlimited<span>Movie</span>, TVs Shows, &amp; More.</h2>
@@ -24,6 +38,7 @@ function Home() {
             <section>
                 <main>
                     <Movies Movies={data.movies} />
+                    <Pagination color={"primary"} count={10} style={{color:"white"}} ></Pagination>
                 </main>
             </section>
 
