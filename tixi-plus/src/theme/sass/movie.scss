@@ -225,7 +225,7 @@ body {
     width: 40%;
     max-width:1300px;
     padding: 10px;
-    top: -80%;
+    top: -70%;
     left: 50%;
     transform: translate(-50%,50%);
     border-radius: 6px;
@@ -264,7 +264,19 @@ body {
         box-shadow: 0 0 0 2px #e7f3ff;
         caret-color: #1877f2;
        }
-      
+       >input[type="submit"]:focus{
+        border-color: #1877f2;
+        box-shadow: 0 0 0 2px #e7f3ff;
+        caret-color: #1877f2;
+        color: #000;
+       }>input[type="submit"]:hover{
+           color: #1877f2;
+           background-color: #fff;
+           border-color: #1877f2;
+       }>input[type="submit"]{
+        color: $white;
+        background-color: #1877f2;
+    }
    }
 }
 
