@@ -11,20 +11,16 @@ function MovieMaster(props: Props) {
     const [isOpenPopupUpdateMovie, setIsOpenPopupUpdateMovie] = React.useState(false)
     const [deleteMovie, { loading, error }] = useMutation(REMOVE_MOVIE);
     const classes = styleGrid();
-    const onCheck = () =>{
-        let confix = window.confirm('are you oke');
-        if(confix == true) {
+    const onCheck = () => {
+        let confix = window.confirm(`Bạn muốn ${props.propMovie.moviesName}`);
+        if (confix == true) {
             deleteMovie({
                 variables: {
-                    _id: props.propMovie.id 
+                    _id: props.propMovie.id
                 }
             })
-        }else {
-            // alert('Bạn không muốn xóa thì đừng bấm')
         }
     }
-
-
     return (
         <Grid item xs={2} className={classes.rootChild}  >
             <Paper className={classes.Paper}     >
@@ -38,7 +34,7 @@ function MovieMaster(props: Props) {
                             }}
                             > Details </a>
                             <a href="#" className="master-movie-btn-remove" onClick={(event) => {
-                               onCheck()
+                                onCheck()
                             }}   >Remove </a>
                         </div>
                     </div>

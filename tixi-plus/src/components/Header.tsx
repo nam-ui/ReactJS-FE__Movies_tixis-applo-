@@ -12,6 +12,7 @@ function Header(props: Props) {
         historry.replace('/')
     }
     const location = useLocation();
+    console.log(location);
     React.useEffect(() => {
         let element = (
             <a href={'/login'}> ĐĂNG NHẬP </a>
@@ -36,7 +37,7 @@ function Header(props: Props) {
             )
         }
         ReactDOM.render(element, document.getElementById('login-user'));
-    }, [])
+    }, [props])
     return (
         <React.Fragment>
             <nav>

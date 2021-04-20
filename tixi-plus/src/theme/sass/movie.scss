@@ -144,18 +144,21 @@ body {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 80%;
+    width: 100%;
     max-width:1300px;
     position: absolute; 
-    top: 150%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-40%);
     z-index: 2;
     padding:20px;
     border-radius:10px;
     display: flex;
     justify-content:flex-start;
     gap: 50px;
+    form{
+        background-image: none;
+    }
     .popup-movie-img{
         height: 100%;
         display: inline-block;
@@ -224,10 +227,9 @@ body {
     position: absolute;
     width: 40%;
     max-width:1300px;
-    padding: 10px;
-    top: -70%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,50%);
+    transform: translate(-50% , -40%);
     border-radius: 6px;
     overflow: hidden;
     z-index: 2;

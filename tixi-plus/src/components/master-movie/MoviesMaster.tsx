@@ -13,7 +13,7 @@ function MoviesMaster(props: Props) {
     </div>
     return (
         <React.Fragment>
-            <Grid container className={classes.root} spacing={2} >
+            <Grid container className={classes.root} spacing={2} style={{margin : '3% auto'}} >
                 {data.movies.map((movie: MovieType) => {
                     return <MovieMaster key={movie.id} propMovie={movie} onChangeId={(idProps) =>{props.onChangeId(idProps)}} onClickOpenDetailsMovie={(statusOpen) => props.onClickOpenDetailsMovie(statusOpen)} />
                 })}
