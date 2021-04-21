@@ -139,8 +139,8 @@ body {
 
 // ?POPUP movie
 .popup-movie-detail-master{
-    overflow: hidden;
-    background-image: url(../img/movie_details_bg.jpg) ;
+    // overflow: hidden;
+    background-color: white;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -153,16 +153,21 @@ body {
     z-index: 2;
     padding:20px;
     border-radius:10px;
-    display: flex;
-    justify-content:flex-start;
-    gap: 50px;
-    form{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: space-evenly;
+    grid-row-gap: 10px;
+    form{   
         background-image: none;
+        padding-left: 20px;
     }
     .popup-movie-img{
         height: 100%;
-        display: inline-block;
+        display: grid;
+        width: auto;
         >img{
+            min-width: 100%;
+            border-radius: 5px;
             display: inline-block;
             width: 100%;
             border-radius: 5px;   
@@ -171,27 +176,37 @@ body {
     }
     .popup-movie-form{
         padding: 0 20px 0 0;
-        width: 80%;
+        width: 100%;
+        textarea{
+            width: 100%;
+            height: 150px;
+            text-align: left;
+            text-align-last: auto;
+            outline: none;
+            border: 2px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            resize: none;
+        }
+        textarea:focus{
+            border-bottom: 2px solid $dark;
+        }
+        form{
+            >input{
+                border:2px solid #ddd;
+                background-color: transparent;
+                color: $dark;
+                border-radius: 6px;
+                width: 100%;
+            }
+            >input:focus{
+                border-bottom: 2px solid #000;
+            }
+        }
     }
-    input{
-        border:none;
-        background-color: transparent;
-        color: $white;
-        width: auto;
-    }
-    .movie-aliases , .movie-moviesName{
-        border: 2px solid transparent;
-        color: $yellow;
-        font-weight : 700;
-        font-size: 26px;
-        padding: 8px 20px;
-    } .movie-aliases:focus , .movie-moviesName:focus {
-        border-bottom: 2px solid $yellow;
+    .movie-aliases:focus , .movie-moviesName:focus {
+        border-bottom: 2px solid $dark;
         border-radius: 5px;
-    }
-    .movie-moviesName{
-        color: $white;
-        font-size: 50px;
     }
     .movie-described{
         padding: 8px 20px;
@@ -199,12 +214,12 @@ body {
         font-size: 14px;
         font-weight: 500;
         line-height: 26px;
-        color: #bcbcbc;
+        color: #292929;
         background-color:transparent;
         outline: none;
     }
     .movie-described:focus{
-        border: 2px solid $yellow;
+        // border: 2px solid ;
     }
     .movie-submit{
         color: $dark;
@@ -221,6 +236,8 @@ body {
         background-color: white;
     }
 }
+
+
 .popup-create-master-movie{
     // background-image: url(../img/movie_details_bg.jpg) ;
     background-color: white;

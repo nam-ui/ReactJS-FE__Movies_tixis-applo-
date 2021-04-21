@@ -1,12 +1,15 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import { MovieTypeCreate } from '../../models/MovieType';
-import { RiFullscreenExitLine } from 'react-icons/all'
+import { IoCloseSharp } from 'react-icons/all'
 import { useMutation, useQuery } from '@apollo/client';
 import { movieQuery } from '../../graphql/Movie';
 import { UPDATE_MOVIE } from '../../graphql/Movie'
 import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
+import moment from 'moment'
+
+
 function PopupMovieMaster(props: Props) {
     const { loading, error, data } = useQuery(movieQuery, {
         variables: {
@@ -52,6 +55,18 @@ function PopupMovieMaster(props: Props) {
         const base64 = await convertBase64(file);
         setPicture({ picture: `${base64}` })
     };
+
+    React.useEffect(() => {
+
+    }, [])
+    const onLaunhDate = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(data.movie.launchDate);
+        console.log(event.target.value);
+    };
+    const setTime = (time: any) => {
+        const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 16)
+        return timeNow.toString()
+    }
     return (
         <React.Fragment>
             <div className="mark">
@@ -69,16 +84,17 @@ function PopupMovieMaster(props: Props) {
                             <input type="text" className="movie-aliases" defaultValue={data.movie.aliases || ""} placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
                             <input type="text" className="movie-moviesName" defaultValue={data.movie.moviesName} placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
                             <input type="text" className="movie-trailer" defaultValue={data.movie.trailer} placeholder="Trailer" {...register("trailer", { required: false })} />
-                            {/* <input type="text" className="movie-picture" defaultValue={data.movie.picture} placeholder="Poster" {...register("picture", { required: true })} /> */}
-                            <textarea defaultValue={data.movie.described || ""} className="movie-described" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />
                             <input type="text" className="movie-groupCode" defaultValue={data.movie.groupCode} placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
-                            <input type="datetime-local" className="movie-launchDate" defaultValue={data.movie.launchDate} placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
+                            <TextField type="datetime-local" style={{ float: "left", margin: "0px 0 10px 0"}} variant="outlined" defaultValue={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}
+                                onChange={onLaunhDate}
+                            />
                             <input type="number" className="movie-rating" defaultValue={data.movie.rating} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />
+                            <textarea defaultValue={data.movie.described || ""} className="movie-de scribed" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />
                             <input type="submit" className="movie-submit" value="Hoàn tất" ></input>
                         </form>
                     </div>
                     <div className="exit-detail-movie-master"  >
-                        <RiFullscreenExitLine fontSize="40px" color="white" onClick={async (event) => { await setIsOpenPopupUpdateMovie(!isOpenPopupUpdateMovie); props.onClickOpenDetailsRoom(isOpenPopupUpdateMovie) }} />
+                        <IoCloseSharp fontSize="30px" color="black" onClick={async (event) => { await setIsOpenPopupUpdateMovie(!isOpenPopupUpdateMovie); props.onClickOpenDetailsRoom(isOpenPopupUpdateMovie) }} />
                     </div>
                 </div>
             )}

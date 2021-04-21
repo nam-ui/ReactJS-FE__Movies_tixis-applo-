@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 // ANCHOR model
 import { MovieTypeCreate } from '../../models/MovieType'
 import { ADD_MOVIE } from '../../graphql/Movie';
-import { RiFullscreenExitLine } from 'react-icons/all'
+import { IoCloseSharp } from 'react-icons/all'
 import { useHistory, useLocation } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 // ANCHOR files
@@ -81,8 +81,8 @@ function FromMovie(props: Props) {
                     <input type="submit" value="Hoàn tất" ></input>
                 </form>
             </div>
-            <div className="exit-create-movie-master"  >
-                <RiFullscreenExitLine fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
+            <div className="exit-create-movie-master" style={{   }} >
+                <IoCloseSharp fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
             </div>
         </React.Fragment>
     )

@@ -45,8 +45,10 @@ function Login() {
 
         })
     };
+    console.log(loading + "useForm loading");
+    console.log(watch + "useForm watch");
+    console.log(errors + "useForm errors");
     console.log(error + "error");
-    console.log(errors);
     return (
         <React.Fragment>
             <div className="body-sign-in">
@@ -68,3 +70,12 @@ function Login() {
 }
 
 export default Login
+
+// height: 150px;
+//            text-align: left;
+//            text-align-last: auto;
+//            outline: none;
+//            border: 1px solid #ddd;
+//            padding: 15px;
+//            border-radius: 5px;
+//            resize: none;
