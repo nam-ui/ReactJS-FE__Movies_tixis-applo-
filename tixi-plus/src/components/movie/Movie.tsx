@@ -5,6 +5,11 @@ import { AiTwotoneStar, FiClock } from 'react-icons/all'
 import { MovieType } from '../../models/MovieType'
 
 function Movie(props: Props) {
+    const time = (time: any) => {
+        const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 4)
+        return timeNow
+    }
+
     return (
         < Grid item xs={3} >
             <div className={"movie-box"}>
@@ -16,7 +21,7 @@ function Movie(props: Props) {
                 <div className={"movie-content"}>
                     <div className="top">
                         <h5 className="title"><a href="/">{props.Movie.moviesName}</a></h5>
-                        <span className="date">2021</span>
+                        <span className="date">{time(props.Movie.launchDate)}</span>
                     </div>
                     <div className="bottom">
                         <ul>

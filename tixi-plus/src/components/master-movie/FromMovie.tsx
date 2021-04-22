@@ -72,8 +72,7 @@ function FromMovie(props: Props) {
                     <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
                         onChange={onChangeIMG}
                     />
-                    <input type="text" {...register("picture", { required: true })}
-                    />
+                    <input style={{ display: "none" }} type="text" {...register("picture", { required: false })}/>
                     <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
                     <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
                     <input type="text" defaultValue={10} placeholder="Đánh giá" {...register("rating", { maxLength: 3, required: true })} />
@@ -81,7 +80,7 @@ function FromMovie(props: Props) {
                     <input type="submit" value="Hoàn tất" ></input>
                 </form>
             </div>
-            <div className="exit-create-movie-master" style={{   }} >
+            <div className="exit-create-movie-master" style={{}} >
                 <IoCloseSharp fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
             </div>
         </React.Fragment>
@@ -97,4 +96,4 @@ export interface Props {
 
 export interface picture {
     picture: string
-} 
+}

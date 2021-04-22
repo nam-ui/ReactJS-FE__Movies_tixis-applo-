@@ -11,12 +11,29 @@ export const styleGrid = makeStyles((theme) => ({
     Paper: {
         backgroundColor: "#1f1e24",
         padding: "15px 15px 10px ",
-        display:'grid',
-        justifyContent:"center"
+        display: 'grid',
+        justifyContent: "center"
     }
-    
-
 }));
+export const stylePagination = makeStyles((theme) => ({
+    root: {
+        // backgroundColor: "#ddd",
+        "& .MuiPagination-ul": {
+            color: "red",
+        },
+        "& .MuiPaginationItem-root": {
+            color: "white",
+        },
+        "& .MuiPaginationItem-outlined":{
+            
+        },
+        "& .MuiPaginationItem-page.Mui-selected":{
+            color: "yellow",
+            backgroundColor: "#404040",
+        }
+    }
+}));
+
 
 
 

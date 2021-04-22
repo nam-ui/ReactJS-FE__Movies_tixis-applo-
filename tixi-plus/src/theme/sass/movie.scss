@@ -14,16 +14,20 @@ body {
     position: relative;
     color: $yellow;
     .movie-poster {
+        width: 100%;
+        height: 470px;
         border-radius: 5px;
         overflow: hidden;
         display: block;
         >a {
             width: 100%;
             height: 100%;
+            display:flex;
+            flex-wrap: wrap;
             >img {
+                object-fit: cover;
                 display: block;
                 width: 100%;
-                vertical-align: middle;
                 border-style: none;
                 max-width: 100%;
                 border-radius: 5px;

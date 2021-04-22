@@ -69,6 +69,31 @@ export const movieQuery = gql`
   }
 }
 `
+
+export const PAGINATION = gql`
+  query pagination($page: Int! , $pageSize: Int!  ){
+    pagination(page: $page, pageSize: $pageSize){
+      page
+      pageSize
+      totalPage
+      movies {
+        id
+        rating  
+        aliases
+        aliases
+        trailer
+        picture
+        described
+        groupCode
+        createdAt
+        launchDate
+        moviesName
+    }
+    }
+  }
+`
+
+
 export const UPDATE_MOVIE = gql`
   mutation updateMovie(    
     $_id: ID!, $moviesName: String, $aliases: String, $trailer: String, $picture: String, $described: String, $groupCode: String, $launchDate: String, $rating:  Int, 

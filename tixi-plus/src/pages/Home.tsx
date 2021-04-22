@@ -3,11 +3,14 @@ import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Movies from '../components/movie/Movies'
-import { moviesQuery } from '../graphql/Movie'
+import { PAGINATION } from '../graphql/Movie'
 import { UserType } from '../models/UserType'
 import { Pagination } from '@material-ui/lab'
+import { stylePagination } from '../theme/MaterialUI'
+import { MoviesPagination } from '../models/PaginationType'
 
 function Home() {
+    const classes = stylePagination()
     const [account, setAccount] = React.useState<UserType>({
         _id: '',
         password: '',
@@ -19,9 +22,30 @@ function Home() {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
     }, [])
-    const { loading, error, data } = useQuery(moviesQuery)
+    const [state, setState] = React.useState<MoviesPagination>({
+        page: 1,
+        pageSize: 12,
+        totalPage: 1,
+        movies: [],
+    });
+    const { loading, error, data } = useQuery(PAGINATION, {
+        variables: {
+            page: state.page,
+            pageSize: state.pageSize
+        }
+    })
+    React.useEffect(() => {
+        if (loading === false && data) {
+            setState(data.pagination);
+        }
+    }, [state.pageSize])
     if (loading) return <p>Loading...</p>
     if (error) return <p>error...</p>
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setState({ ...state, page: value });
+    };
+
     return (
         <React.Fragment>
             <header>
@@ -37,9 +61,10 @@ function Home() {
             </header>
             <section>
                 <main>
-                    <Movies Movies={data.movies} />
-                    <Pagination color={"primary"} count={10} style={{color:"white"}} ></Pagination>
+                    <Movies Movies={data.pagination.movies} />
+                    <Pagination className={classes.root} page={state.page} variant="outlined" count={data.pagination.totalPage} onChange={handleChange}  ></Pagination>
                 </main>
+
             </section>
 
             <Footer />

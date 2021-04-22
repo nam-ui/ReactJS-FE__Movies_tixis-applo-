@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 // * CSS 
 import './App.scss';
 // ANCHOR files
@@ -10,7 +10,7 @@ import MasterMovie from './pages/MasterMovie';
 import Login from './pages/Login';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5030/graphql',
+  uri: `http://localhost:5030/graphql `,
   cache: new InMemoryCache(),
 })
 
@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <Route path="/master/movie" component={MasterMovie} />
           <Route path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <Route path="/:page" component={Home} />
           <Route component={Pages404} />
         </Switch>
       </Router>
