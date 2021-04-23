@@ -14,13 +14,13 @@ function Movie(props: Props) {
         < Grid item xs={3} >
             <div className={"movie-box"}>
                 <div className={"movie-poster"}>
-                    <Link to="/">
+                    <Link to={`/movie/${props.Movie.id}`}>
                         <img src={props.Movie.picture} alt="image" />
                     </Link>
                 </div>
                 <div className={"movie-content"}>
                     <div className="top">
-                        <h5 className="title"><a href="/">{props.Movie.moviesName}</a></h5>
+                        <h5 className="title"><a href={`/movie/${props.Movie.id}`}>{props.Movie.moviesName}</a></h5>
                         <span className="date">{time(props.Movie.launchDate)}</span>
                     </div>
                     <div className="bottom">

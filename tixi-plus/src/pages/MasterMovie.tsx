@@ -7,6 +7,7 @@ import MoviesMaster from '../components/master-movie/MoviesMaster';
 import PopupMovieMaster from '../components/master-movie/PopupMovieMaster';
 import Header from '../components/Header';
 import { UserType } from '../models/UserType';
+import Pages404 from './Pages404';
 function MasterMovie() {
     const [account, setAccount] = React.useState<UserType>({
         _id: '',
@@ -28,22 +29,26 @@ function MasterMovie() {
             <header style={{ minHeight: "auto", backgroundImage: "none" }}>
                 <Header user={account} />
             </header>
-            <section>
-                <main>
-                    <div id="container-relative">
-                        <CssBaseline />
-                        <a id="btn-open-popup-movie-create" href="#" onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </a>
-                        <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
-                        {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} />}
-                        {isOpenPopupUpdateMovie === true && <PopupMovieMaster onClickOpenDetailsRoom={(statusOpen) => {
-                            setIsOpenPopupUpdateMovie(statusOpen)
-                            setIsOpenMovie(false)
-                        }}
-                            idPropMovie={idFindMovie}
-                        />}
-                    </div>
-                </main>
-            </section>
+            {
+                account.role === "admin" ? (
+                    <section>
+                        <main>
+                            <div id="container-relative">
+                                <CssBaseline />
+                                <a id="btn-open-popup-movie-create" href="#" onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </a>
+                                <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
+                                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} />}
+                                {isOpenPopupUpdateMovie === true && <PopupMovieMaster onClickOpenDetailsRoom={(statusOpen) => {
+                                    setIsOpenPopupUpdateMovie(statusOpen)
+                                    setIsOpenMovie(false)
+                                }}
+                                    idPropMovie={idFindMovie}
+                                />}
+                            </div>
+                        </main>
+                    </section>
+                ) : <Pages404 />
+            }
         </React.Fragment>
     )
 }

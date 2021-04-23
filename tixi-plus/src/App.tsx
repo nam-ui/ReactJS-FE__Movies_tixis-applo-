@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Pages404 from './pages/Pages404';
 import MasterMovie from './pages/MasterMovie';
 import Login from './pages/Login';
+import DetailMovie from './pages/DetailMovie';
 
 const client = new ApolloClient({
   uri: `http://localhost:5030/graphql `,
@@ -21,7 +22,9 @@ function App() {
         <Switch>
           <Route path="/master/movie" component={MasterMovie} />
           <Route path="/login" component={Login} />
-          <Route path="/:page" component={Home} />
+          <Route path="/movie/:id" component={DetailMovie} />
+          <Route exact path="/page=:page" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route component={Pages404} />
         </Switch>
       </Router>
