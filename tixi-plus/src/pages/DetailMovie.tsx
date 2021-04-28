@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React from 'react'
+import React, { useState } from 'react'
 import { BiShareAlt } from 'react-icons/bi';
 import { FiClock } from 'react-icons/fi';
 import { useParams } from 'react-router-dom'
@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import { movieQuery } from '../graphql/Movie';
 import { UserType } from '../models/UserType';
 import banner from '../theme/img/movie_details_bg.jpg'
+import ReactPlayer from 'react-player'
+import { useMediaQuery } from '@material-ui/core';
 
 function DetailMovie() {
     const params = useParams<params>();
@@ -28,15 +30,31 @@ function DetailMovie() {
         return timeNow
     }
 
+    const [isOpenVideo, setIsOpenvideo] = React.useState(false)
     const { loading, error, data } = useQuery(movieQuery, {
         variables: {
             _id: params.id,
         }
     })
+    const matches = useMediaQuery('(max-width: 768px)');
+    const [stylesVideo, setStylesVideo] = React.useState({
+
+    })
+    React.useMemo(() => {
+        if (matches === true) {
+            setStylesVideo({
+                width: "100%",
+                maxWidth :"100%",
+                maxHeight :"75vh"
+            })
+        }
+    }, [matches])
+
+
+
+
     if (loading) return <p>Loading...</p>
     if (error) return <p>error...</p>
-
-    console.log(data);
 
 
     return (
@@ -45,17 +63,18 @@ function DetailMovie() {
                 <Header user={account} />
                 <div id="header-detail-movie" >
                     <div id="poster-movie-detail">
-                        <a href="#" className="open-movie"></a>
+                        <a href="#" onClick={() => { setIsOpenvideo(!isOpenVideo) }} className="open-movie"></a>
                         <img src={data.movie.picture} alt="poster-movie" />
                     </div>
                     <div id="information-movie-detail">
                         <p><h2 className="episodes">{"New Episodes"}</h2></p>
-                        <p><h2  className="movie-detail-name">{data.movie.moviesName}</h2></p>
+                        <p><h2 className="movie-detail-name">{data.movie.moviesName}</h2></p>
                         <p>  <span className="date">{time(data.movie.launchDate)}</span><span className="duration"><FiClock ></FiClock> 128 min</span> </p>
                         <p>
                             <span className="described">
                                 {data.movie.described}
                             </span>
+
                         </p>
                         <div className="btn-share">
                             <button className="btn-share-left" >
@@ -74,6 +93,25 @@ function DetailMovie() {
                         </div>
                     </div>
                 </div>
+                {
+                    isOpenVideo === true ?
+                        <div className="mark" onClick={() => { setIsOpenvideo(!isOpenVideo) }} >
+                        </div> : null
+                }
+                {
+                    isOpenVideo === true ? <div id="video-a-detail" >
+                        < ReactPlayer muted={false} playing={isOpenVideo} style={stylesVideo}  left={0} width={"1300px"} height={"100%"} controls stopOnUnmount poster={data.movie.picture} url={data.movie.trailer} config={{
+                            youtube: {
+                                playerVars: { showinfo: 1 },
+                            },
+                            file: {
+                                tracks: [
+                                    { kind: 'subtitles', src: 'subs/subtitles.en.vtt', srcLang: 'en', default: true, label: "EN" },
+                                ]
+                            }
+                        }} />
+                    </div> : null
+                }
             </header>
             <Footer />
         </ React.Fragment>

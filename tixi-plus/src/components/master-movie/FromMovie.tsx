@@ -14,35 +14,42 @@ function FromMovie(props: Props) {
     // TODO event create
     const historry = useHistory();
     const location = useLocation();
-    const [addMovie, { loading, error }] = useMutation(ADD_MOVIE);
     const [picture, setPicture] = React.useState<picture>({
         picture: ``
     })
 
+    const [formStateMovie, setFormStateMovie] = React.useState<MovieTypeCreate>({ rating: 10 })
+
+    const [addMovie] = useMutation(ADD_MOVIE, {
+        variables: {
+            moviesName: formStateMovie.moviesName,
+            aliases: formStateMovie.aliases,
+            trailer: formStateMovie.trailer,
+            picture: picture.picture,
+            described: formStateMovie.described,
+            groupCode: formStateMovie.groupCode,
+            launchDate: formStateMovie.launchDate,
+            rating: formStateMovie.rating
+        },
+        onCompleted: ({ movies }) => {
+            console.log(movies);
+            
+           props.stateFormCreated(movies)
+        }
+    });
+
     const onSubmit = async (movie: MovieTypeCreate) => {
-        await addMovie({
-            variables: {
-                moviesName: movie.moviesName,
-                aliases: movie.aliases,
-                trailer: movie.trailer,
-                picture: picture.picture,
-                described: movie.described,
-                groupCode: movie.groupCode,
-                launchDate: movie.launchDate,
-                rating: parseInt(movie.rating.toString()),
-            },
-        }).catch((res) => {
+        setFormStateMovie({ ...movie, picture: picture.picture })
+        addMovie().catch((res) => {
             res.graphQLErrors.map((error: any) => {
                 console.log(error);
                 return error.message;
             });
         }).then(res => {
-            console.log(location.pathname);
-            historry.replace(location.pathname)
+
         });
     };
-    console.log(loading);
-    console.log(error);
+
     console.log(errors);
 
 
@@ -62,26 +69,34 @@ function FromMovie(props: Props) {
     };
     return (
         <React.Fragment>
-            <div className="mark">
-            </div>
-            <div className="popup-create-master-movie">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="text" placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
-                    <input type="text" placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
-                    <input type="text" placeholder="Trailer" {...register("trailer", { required: false })} />
-                    <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
-                        onChange={onChangeIMG}
-                    />
-                    <input style={{ display: "none" }} type="text" {...register("picture", { required: false })}/>
-                    <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
-                    <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
-                    <input type="text" defaultValue={10} placeholder="Đánh giá" {...register("rating", { maxLength: 3, required: true })} />
-                    <textarea placeholder="Nội dung" rows={5} className="described" {...register("described", { required: true })} />
-                    <input type="submit" value="Hoàn tất" ></input>
-                </form>
-            </div>
-            <div className="exit-create-movie-master" style={{}} >
-                <IoCloseSharp fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
+            <div className="mark" >
+                <div className="popup-create-master-movie">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <input type="text" placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
+                        {errors.moviesName && <p className="f-danger text text-align-left" > ⚠ Lổi tên phim</p>}
+                        <input type="text" placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
+                        {errors.aliases && <p className="f-danger text text-align-left" > ⚠ Lổi bí danh</p>}
+                        <input type="text" placeholder="Trailer" {...register("trailer", { required: true })} />
+                        {errors.trailer && <p className="f-danger text text-align-left" > ⚠ Lổi trailer</p>}
+                        <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
+                            onChange={onChangeIMG}
+                        />
+                        {errors.moviesName && <p className="f-danger text text-align-left" > ⚠ Lổi hình ảnh</p>}
+                        <input style={{ display: "none" }} type="text" {...register("picture", { required: false })} />
+                        <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
+                        {errors.groupCode && <p className="f-danger text text-align-left" > ⚠ Lổi Mã nhóm</p>}
+                        <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
+                        {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày ra mắt</p>}
+                        <input type="text" defaultValue={10} placeholder="Đánh giá" {...register("rating", { maxLength: 3, required: true })} />
+                        {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi ngày đánh giá</p>}
+                        <textarea placeholder="Nội dung" rows={5} className="described" {...register("described", { required: true })} />
+                        {errors.described && <p className="f-danger text text-align-left" > ⚠ Lổi ngày bình luận</p>}
+                        <input type="submit" value="Hoàn tất" ></input>
+                    </form>
+                </div>
+                <div className="exit-create-movie-master" style={{}} >
+                    <IoCloseSharp fontSize="40px" color="white" onClick={() => props.onOpenCreatePopup(false)} />
+                </div>
             </div>
         </React.Fragment>
     )
@@ -90,10 +105,11 @@ function FromMovie(props: Props) {
 export default FromMovie;
 
 export interface Props {
-    onOpenCreatePopup(event: boolean): void
+    onOpenCreatePopup(event: boolean): void ,
+    stateFormCreated( movies : MovieTypeCreate ) : void
 }
 
 
 export interface picture {
-    picture: string
+    picture: string , 
 }

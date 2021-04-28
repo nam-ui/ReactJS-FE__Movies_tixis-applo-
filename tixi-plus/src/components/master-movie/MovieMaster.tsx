@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Grid } from '@material-ui/core'
+import { Paper, Grid, useMediaQuery } from '@material-ui/core'
 import { styleGrid } from '../../theme/MaterialUI'
 import Rating from '@material-ui/lab/Rating';
 // import { AiFillSetting, AiFillDelete } from 'react-icons/all'
@@ -21,8 +21,22 @@ function MovieMaster(props: Props) {
             })
         }
     }
+    const matches = useMediaQuery('(max-width: 768px)');
+
+    const sizeGird = React.useMemo(() => {
+        if (matches == false) {
+            return 2;
+        }
+        if (matches == true) {
+            return 4;
+        }
+    }, [matches])
+
+
+
+
     return (
-        <Grid item xs={2} className={classes.rootChild}  >
+        <Grid item xs={sizeGird || 2} className={classes.rootChild}  >
             <Paper className={classes.Paper}     >
                 <div className="box-image-master">
                     <img className="image-master" alt={props.propMovie.moviesName || "Postermovie"} src={props.propMovie.picture} />
@@ -41,7 +55,7 @@ function MovieMaster(props: Props) {
                     <div className="box-master-hover-mark">
                     </div>
                 </div>
-                <Rating style={{ fontSize: "13px", color: "#e4d804", marginBottom: "10px", margin: "auto" }} name="movie-rating" value={props.propMovie.rating || 5} precision={0.5} readOnly />
+                <Rating style={{ fontSize: "13px", color: "#e4d804", marginBottom: "10px", margin: "auto" }} name="movie-rating" value={parseInt(props.propMovie.rating.toString()) || 5} precision={0.5} readOnly />
                 <a className="master-movie-a" href="/">{props.propMovie.moviesName}</a>
                 <span className="master-movie-rel">{props.propMovie.aliases}</span>
             </Paper>

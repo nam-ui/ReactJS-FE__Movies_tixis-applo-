@@ -37,7 +37,8 @@ function MasterMovie() {
                                 <CssBaseline />
                                 <a id="btn-open-popup-movie-create" href="#" onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </a>
                                 <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
-                                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} />}
+                                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }}  stateFormCreated={(movies) =>{ console.log(movies) ;
+                                }}  />}
                                 {isOpenPopupUpdateMovie === true && <PopupMovieMaster onClickOpenDetailsRoom={(statusOpen) => {
                                     setIsOpenPopupUpdateMovie(statusOpen)
                                     setIsOpenMovie(false)

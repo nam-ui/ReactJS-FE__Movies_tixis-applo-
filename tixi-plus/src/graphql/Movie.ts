@@ -155,3 +155,20 @@ export const LOGIN = gql`
     }
 `
 
+export const FIND_MOVIES = gql`
+  mutation findMovie( $moviesName: String!  ){
+    findMovie(moviesName: $moviesName ){
+        id
+        rating  
+        aliases
+        aliases
+        trailer
+        picture
+        described
+        groupCode
+        createdAt
+        launchDate
+        moviesName
+    }
+  }
+`

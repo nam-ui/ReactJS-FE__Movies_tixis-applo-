@@ -5,6 +5,10 @@ body {
     background-color: $dark;
 }
 
+header {
+    position: relative;
+}
+
 // * MOVIE movie-box
 .movie-box {
     width: 100%;
@@ -169,6 +173,7 @@ body {
 }
 
 // ?POPUP movie
+
 .popup-movie-detail-master {
     // overflow: hidden;
     background-color: white;
@@ -181,14 +186,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -40%);
-    z-index: 2;
+    z-index: 100;
     padding: 20px;
     border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 3fr;
     justify-content: space-evenly;
     grid-row-gap: 10px;
-
     form {
         background-image: none;
         padding-left: 20px;
@@ -198,7 +202,6 @@ body {
         height: 100%;
         display: grid;
         width: auto;
-
         >img {
             min-width: 100%;
             border-radius: 5px;
@@ -212,7 +215,6 @@ body {
     .popup-movie-form {
         padding: 0 20px 0 0;
         width: 100%;
-
         textarea {
             width: 100%;
             height: 150px;
@@ -291,11 +293,11 @@ body {
     max-width: 1300px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -50%);
     border-radius: 6px;
     overflow: hidden;
     z-index: 2;
-
+    min-width : 270px;
     >form {
         width: 100%;
         padding: 10px;
@@ -369,16 +371,19 @@ body {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 3fr;
+
     #poster-movie-detail {
         position: relative;
         display: flex;
         width: 100%;
-        >img{
+
+        >img {
             border-radius: 7px;
             width: 100%;
-            height:100%;
-            object-fit:  cover;
+            height: 100%;
+            object-fit: cover;
         }
+
         .open-movie {
             width: 100%;
             height: 100%;
@@ -394,29 +399,35 @@ body {
         padding-left: 20px;
         color: #fff;
         margin-bottom: 10px;
-        .movie-detail-name{
+
+        .movie-detail-name {
             font-size: 54px;
             font-weight: 700;
         }
-        .date{
+
+        .date {
             padding-right: 20px;
         }
+
         .episodes {
             font-size: 25px;
             color: $yellow;
         }
-        p{
-            display:flex;
+
+        p {
+            display: flex;
             align-items: center;
             padding-bottom: 10px;
         }
-        .described{
+
+        .described {
             font-size: 14px;
             font-weight: 500;
             line-height: 26px;
             color: #bcbcbc;
         }
-        .btn-share{
+
+        .btn-share {
             display: grid;
             align-items: center;
             max-width: 475px;
@@ -426,7 +437,8 @@ body {
             padding: 25px 25px 25px;
             gap: 10px;
             grid-template-columns: 1fr 3fr;
-            .btn-share-left{
+
+            .btn-share-left {
                 width: 100%;
                 height: 100%;
                 border: none;
@@ -437,31 +449,39 @@ body {
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                p{
-                    font-size:20px;
+
+                p {
+                    font-size: 20px;
                 }
             }
-            .btn-share-right{
+
+            .btn-share-right {
                 width: 100%;
                 height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                >div{width: 100%;}
-                >div>p:first-child{
+
+                >div {
+                    width: 100%;
+                }
+
+                >div>p:first-child {
                     font-size: 23px;
-                    font-weight:700;
+                    font-weight: 700;
                     padding-bottom: 5px;
                 }
-                >div>p:last-child{
+
+                >div>p:last-child {
                     font-size: 13 px;
                     font-weight: 100;
-                    color : #ddd;
+                    color: #ddd;
                 }
-                button{
+
+                button {
                     padding: 10px 0px;
                     width: 90%;
-                    background-color : transparent;
+                    background-color: transparent;
                     border: 2px solid $yellow;
                     border-radius: 50px;
                     color: #fff;
@@ -473,3 +493,85 @@ body {
         }
     }
 }
+
+#video-a-detail {
+    width: 100%;
+    height: 80vh;
+    max-width: 1300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    margin: 0 auto;
+
+}
+
+.text-align-left {
+    padding-left: 5px;
+    text-align: left;
+}
+
+.header-slider {
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 120px;
+
+    h1 {
+        color: $yellow;
+    }
+
+    h2 {
+        max-width: 600px;
+        color: $white;
+        font-size: 60px;
+        visibility: visible;
+        animation-duration: 1.8s;
+        animation-delay: 0.4s;
+        animation-name: fadeInUp;
+        font-size: 60px;
+        line-height: 1.2;
+        margin-bottom: 29px;
+
+        span {
+            color: yellow;
+        }
+    }
+
+    >div {
+        color: white;
+
+        >p {
+            span {
+                color: #ddd;
+                font-size: 13px;
+            }
+
+            span:nth-child(1) {
+                border: 2px solid #fff;
+                background-color: white;
+                color: black;
+                padding: 4px 8px;
+                font-weight: 700;
+                font-size: 12px;
+            }
+
+            span:nth-child(2) {
+                color: white;
+                padding: 4px 8px;
+                font-weight: 700;
+                font-size: 12px;
+                border: 2px solid #fff;
+            }
+        }
+    }
+}
+
+.master-movie-a {
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

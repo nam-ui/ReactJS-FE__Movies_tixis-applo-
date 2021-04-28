@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid } from '@material-ui/core'
+import { Grid, useMediaQuery } from '@material-ui/core'
 import { AiTwotoneStar, FiClock } from 'react-icons/all'
 import { MovieType } from '../../models/MovieType'
 
@@ -9,10 +9,22 @@ function Movie(props: Props) {
         const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 4)
         return timeNow
     }
-
+    const matches = useMediaQuery('(max-width: 768px)');
+    const [mobileStyle, setMobileStyle] = React.useState({})
+    const sizeGird = React.useMemo(() => {
+        if (matches == false) {
+            return 3;
+        }
+        if (matches == true) {
+            setMobileStyle({
+                padding: "10px 2.5px"
+            })
+            return 6;
+        }
+    }, [matches])
     return (
-        < Grid item xs={3} >
-            <div className={"movie-box"}>
+        < Grid item xs={sizeGird} >
+            <div className={"movie-box"} style={mobileStyle} >
                 <div className={"movie-poster"}>
                     <Link to={`/movie/${props.Movie.id}`}>
                         <img src={props.Movie.picture} alt="image" />

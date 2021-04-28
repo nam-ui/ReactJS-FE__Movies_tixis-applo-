@@ -1,25 +1,303 @@
 @media only screen and (max-width: 768px) {
-    // TODO SIGN IN
-    .body-sign-in {
-        height: 100%;
-        form {
-            height: 100%;
-            .exit-login {
-              display: none;
+    .popup-movie-detail-master {
+        top: 40%;
+        grid-template-columns: 1fr;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        .popup-movie-img{
+            display: flex;
+            align-items: center;
+            justify-content:center;            
+            img {
+                display:none;
             }
         }
     }
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
     // TODO SIGN IN
     .body-sign-in {
         height: 100%;
+
+        form {
+            height: 100%;
+
+            .exit-login {
+                display: none;
+            }
+
+        }
+    }
+
+    header {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        min-height: 100%;
+
+        nav {
+            #mobi-menu {
+                position: relative;
+            }
+
+            #mobi-menu-click {
+                background-color: #171d22;
+                width: 80%;
+                height: 100vh;
+                position: fixed;
+                z-index: 3;
+                top: 0;
+                right: 0;
+            }
+
+            #menu-mobile-logo-and-close {
+                display: flex;
+                padding: 10px 10px;
+                justify-content: space-between;
+            }
+
+            padding: 10px;
+            position: relative;
+
+            #header-logo {
+                display: flex;
+            }
+
+            #header-menu-0 {
+                display: block;
+                justify-content: flex-end;
+
+                .menu-lv-1 {
+                    padding: 0px 10px;
+                    display: block;
+
+                    >li {
+                        padding: 10px 0;
+                        display: block;
+
+                        >a {
+                            padding: 2px;
+                        }
+                    }
+                }
+            }
+
+            #header-feature {
+                position: absolute;
+
+                .nav-feature {
+                    display: block;
+
+                    >li {
+                        padding: 10px;
+                    }
+
+                    #login-user {
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        .header-slider {
+            padding-top: 10px;
+            max-width: 100%;
+            margin-top: 80px;
+
+            h2 {
+                font-size: 40px;
+                max-width: 200px;
+            }
+
+            .banner-meta {
+                padding: 40px 0;
+            }
+        }
+    }
+
+    section {
+        main {
+            .movie-box {
+                margin-right: 0px;
+
+                .movie-poster {
+                    height: 350px;
+                }
+            }
+        }
+    }
+
+    // FOOTER
+    footer {
+        .footer-one {
+            display: block;
+            padding-bottom: 10px;
+
+            #footer-one-logo {
+                display: none;
+            }
+
+            #footer-one-ul {
+                display: block;
+
+                >#footer-one-ul-lv-1 {
+                    display: block;
+
+                    >li {
+                        padding: 10px 0px;
+                    }
+                }
+            }
+        }
+
+        .footer-two {
+            display: block;
+            padding: 10px 0 40px 0;
+
+            .footer-two-nav {
+                display: block;
+                width: 100%;
+                min-width: 100%;
+
+                .footer-two-ul-vl-1 {
+                    display: block;
+                    width: 100%;
+
+                    >li {
+                        padding: 8px 0;
+                    }
+                }
+            }
+        }
+
+        .container-footer-three {}
+    }
+
+    #loadding-and-error-data-resp {}
+
+    #header-detail-movie {
+        grid-template-columns: 1fr;
+        padding: 10px 20px 10px 10px;
+    }
+
+    #information-movie-detail {
+        margin-top: 10px;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    // TODO SIGN IN
+    .body-sign-in {
+        height: 100%;
+
         form {
             min-width: 100%;
             height: 100%;
+
             .exit-login {
-              display: none;
+                display: none;
             }
         }
+    }
+
+    header {
+        nav {
+            .header-slider {
+                padding-top: 10px;
+                max-width: 100%;
+                margin-top: 80px;
+
+                h2 {
+                    font-size: 40px;
+                    max-width: 200px;
+                }
+
+                .banner-meta {
+                    padding: 40px 0;
+                }
+            }
+        }
+
+    }
+
+    header nav #header-menu-0 .menu-lv-1 li>a {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    header nav #header-feature>.nav-feature>li {
+        padding: 2px 5px;
+    }
+
+    header nav #header-feature>.nav-feature>li:last-child {
+        font-size: 13px;
+        padding: 2px 5px;
+    }
+
+    #login-user {
+        padding: none;
+    }
+
+    form {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+
+    // TODO SIGN IN
+    .body-sign-in {
+        height: 100%;
+
+        form {
+            min-width: 100%;
+            height: 100%;
+
+            .exit-login {
+                display: none;
+            }
+        }
+    }
+
+    header {
+        nav {
+            .header-slider {
+                padding-top: 10px;
+                max-width: 100%;
+                margin-top: 80px;
+
+                h2 {
+                    font-size: 40px;
+                    max-width: 200px;
+                }
+
+                .banner-meta {
+                    padding: 40px 0;
+                }
+            }
+        }
+
+    }
+
+    header nav #header-menu-0 .menu-lv-1 li>a {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    header nav #header-feature>.nav-feature>li {
+        padding: 2px 5px;
+    }
+
+    header nav #header-feature>.nav-feature>li:last-child {
+        font-size: 13px;
+        padding: 2px 5px;
+    }
+
+    #login-user {
+        padding: none;
     }
 }

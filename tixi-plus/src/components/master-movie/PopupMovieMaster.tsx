@@ -34,7 +34,7 @@ function PopupMovieMaster(props: Props) {
                 described: movie.described,
                 groupCode: movie.groupCode,
                 launchDate: movie.launchDate,
-                rating: parseInt(movie.rating.toString()),
+                rating: movie.rating ,
             }
         })
         historry.replace('/master/movie');
@@ -69,35 +69,42 @@ function PopupMovieMaster(props: Props) {
     }
     return (
         <React.Fragment>
-            <div className="mark">
-            </div>
-            {loading === false && (
-                <div className="popup-movie-detail-master">
-                    <div className="popup-movie-img">
-                        <img src={picture.picture === `` ? data.movie.picture : picture.picture} alt="poster-img" />
-                        <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
-                            onChange={onChangeIMG}
-                        />
-                    </div>
-                    <div className="popup-movie-form">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <input type="text" className="movie-aliases" defaultValue={data.movie.aliases || ""} placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
-                            <input type="text" className="movie-moviesName" defaultValue={data.movie.moviesName} placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
-                            <input type="text" className="movie-trailer" defaultValue={data.movie.trailer} placeholder="Trailer" {...register("trailer", { required: false })} />
-                            <input type="text" className="movie-groupCode" defaultValue={data.movie.groupCode} placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
-                            <TextField type="datetime-local" style={{ float: "left", margin: "0px 0 10px 0"}} variant="outlined" defaultValue={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}
-                                onChange={onLaunhDate}
+            <div className="mark" >
+                {loading === false && (
+                    <div className="popup-movie-detail-master">
+                        <div className="popup-movie-img">
+                            <img src={picture.picture === `` ? data.movie.picture : picture.picture} alt="poster-img" />
+                            <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
+                                onChange={onChangeIMG}
                             />
-                            <input type="number" className="movie-rating" defaultValue={data.movie.rating} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />
-                            <textarea defaultValue={data.movie.described || ""} className="movie-de scribed" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />
-                            <input type="submit" className="movie-submit" value="Hoàn tất" ></input>
-                        </form>
+                        </div>
+                        <div className="popup-movie-form">
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <input type="text" className="movie-aliases" defaultValue={data.movie.aliases || ""} placeholder="Bí danh" {...register("aliases", { maxLength: 300, required: true })} />
+                                {errors.aliases && <p className="f-danger text text-align-left" > ⚠ Lổi bí danh</p>}
+                                <input type="text" className="movie-moviesName" defaultValue={data.movie.moviesName} placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
+                                {errors.moviesName && <p className="f-danger text text-align-left" > ⚠ Lổi tên phim </p>}
+                                <input type="text" className="movie-trailer" defaultValue={data.movie.trailer} placeholder="Trailer" {...register("trailer", { required: true })} />
+                                {errors.trailer && <p className="f-danger text text-align-left" > ⚠ Lổi trailer </p>}
+                                <input type="text" className="movie-groupCode" defaultValue={data.movie.groupCode} placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
+                                {errors.groupCode && <p className="f-danger text text-align-left" > ⚠ Lổi mã nhóm </p>}
+                                <TextField type="datetime-local" style={{ float: "left", margin: "0px 0 10px 0" }} variant="outlined" defaultValue={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}
+                                    onChange={onLaunhDate}
+                                />
+                                {/* {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày chiếu</p>} */}
+                                <input type="number" className="movie-rating" defaultValue={data.movie.rating} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />
+                                {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi đánh giá </p>}
+                                <textarea defaultValue={data.movie.described || ""} className="movie-de scribed" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />
+                                {errors.described && <p className="f-danger text text-align-left" > ⚠ Lổi ngày bình luận</p>}
+                                <input type="submit" className="movie-submit" value="Hoàn tất" ></input>
+                            </form>
+                        </div>
+                        <div className="exit-detail-movie-master"  >
+                            <IoCloseSharp fontSize="30px" color="black" onClick={async (event) => { await setIsOpenPopupUpdateMovie(!isOpenPopupUpdateMovie); props.onClickOpenDetailsRoom(isOpenPopupUpdateMovie) }} />
+                        </div>
                     </div>
-                    <div className="exit-detail-movie-master"  >
-                        <IoCloseSharp fontSize="30px" color="black" onClick={async (event) => { await setIsOpenPopupUpdateMovie(!isOpenPopupUpdateMovie); props.onClickOpenDetailsRoom(isOpenPopupUpdateMovie) }} />
-                    </div>
-                </div>
-            )}
+                )}
+            </div>
         </React.Fragment>
     )
 }

@@ -12,7 +12,11 @@ export const styleGrid = makeStyles((theme) => ({
         backgroundColor: "#1f1e24",
         padding: "15px 15px 10px ",
         display: 'grid',
-        justifyContent: "center"
+        justifyContent: "center",
+        overflow: "hidden",
+        "@media screen and (max-width: 600px) ": {
+            padding: "10px 5px 5px ",
+        }
     }
 }));
 export const stylePagination = makeStyles((theme) => ({
