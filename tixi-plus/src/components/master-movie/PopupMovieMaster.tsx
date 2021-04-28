@@ -34,7 +34,7 @@ function PopupMovieMaster(props: Props) {
                 described: movie.described,
                 groupCode: movie.groupCode,
                 launchDate: movie.launchDate,
-                rating: movie.rating ,
+                rating: movie.rating,
             }
         })
         historry.replace('/master/movie');
@@ -91,7 +91,8 @@ function PopupMovieMaster(props: Props) {
                                 <TextField type="datetime-local" style={{ float: "left", margin: "0px 0 10px 0" }} variant="outlined" defaultValue={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}
                                     onChange={onLaunhDate}
                                 />
-                                {/* {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày chiếu</p>} */}
+                                <input type="datetime-local" style={{ display: "none" }} value={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}  onChange={onLaunhDate}/>
+                                {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày chiếu</p>}
                                 <input type="number" className="movie-rating" defaultValue={data.movie.rating} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />
                                 {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi đánh giá </p>}
                                 <textarea defaultValue={data.movie.described || ""} className="movie-de scribed" placeholder="Nội dung" {...register("described", { maxLength: 1500, required: true })} />

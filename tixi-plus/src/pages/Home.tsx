@@ -8,9 +8,11 @@ import { UserType } from '../models/UserType'
 import { Pagination } from '@material-ui/lab'
 import { stylePagination } from '../theme/MaterialUI'
 import { MoviesPagination } from '../models/PaginationType'
+import { useHistory, useParams } from 'react-router-dom'
 
 function Home() {
     const classes = stylePagination()
+    const history = useHistory();
     const [account, setAccount] = React.useState<UserType>({
         _id: '',
         password: '',
@@ -22,8 +24,10 @@ function Home() {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
     }, [])
+    const paramsPageURL = useParams<PageURLTYPE>();
+    const existedParamsPage = paramsPageURL.page ?? 1
     const [state, setState] = React.useState<MoviesPagination>({
-        page: 1,
+        page: parseInt(existedParamsPage.toString()) ,
         pageSize: 12,
         totalPage: 1,
         movies: [],
@@ -34,11 +38,13 @@ function Home() {
             pageSize: state.pageSize
         }
     })
+    
     React.useEffect(() => {
+        history.replace(`/page=${state.page}`)
         if (loading === false && data) {
             setState(data.pagination);
         }
-    }, [state.pageSize, state.movies.length])
+    }, [state.page, existedParamsPage])
 
 
     if (loading === true) return <div id="loadding-and-error-data-resp">
@@ -51,7 +57,7 @@ function Home() {
     return (
         <React.Fragment>
             <header>
-                <Header user={account}  />
+                <Header user={account} />
                 {/* onSearch={(dataSearch) => setState({ ...state, movies:dataSearch})  } */}
                 {console.log(state.movies)}
 
@@ -76,3 +82,8 @@ function Home() {
     )
 }
 export default Home
+
+
+export interface PageURLTYPE {
+    page: string
+}

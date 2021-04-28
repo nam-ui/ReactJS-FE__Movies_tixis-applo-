@@ -20,7 +20,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route path="/master/movie" component={MasterMovie} />
+          <Route path="/master/movie/" component={MasterMovie} />
+          <Route path="/master/movie/page=:page" component={MasterMovie} />
           <Route path="/login" component={Login} />
           <Route path="/movie/:id" component={DetailMovie} />
           <Route exact path="/page=:page" component={Home} />

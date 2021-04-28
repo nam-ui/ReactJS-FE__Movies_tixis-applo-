@@ -42,7 +42,7 @@ function MovieMaster(props: Props) {
                     <img className="image-master" alt={props.propMovie.moviesName || "Postermovie"} src={props.propMovie.picture} />
                     <div className="box-master-hover-setting">
                         <div className="master-movie-btn">
-                            <a className="master-movie-btn-details" href="#" onClick={async (even) => {
+                            <a className="master-movie-btn-details" onClick={async (even) => {
                                 props.onChangeId(props.propMovie.id);
                                 await props.onClickOpenDetailsMovie(!isOpenPopupUpdateMovie);
                             }}

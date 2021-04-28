@@ -25,21 +25,20 @@ function FromMovie(props: Props) {
             moviesName: formStateMovie.moviesName,
             aliases: formStateMovie.aliases,
             trailer: formStateMovie.trailer,
-            picture: picture.picture,
+            picture: formStateMovie.picture,
             described: formStateMovie.described,
             groupCode: formStateMovie.groupCode,
             launchDate: formStateMovie.launchDate,
-            rating: formStateMovie.rating
+            rating: parseInt(formStateMovie.rating.toString())
         },
         onCompleted: ({ movies }) => {
             console.log(movies);
-            
-           props.stateFormCreated(movies)
+            props.stateFormCreated(movies)
+
         }
     });
-
     const onSubmit = async (movie: MovieTypeCreate) => {
-        setFormStateMovie({ ...movie, picture: picture.picture })
+        setFormStateMovie({ ...movie })
         addMovie().catch((res) => {
             res.graphQLErrors.map((error: any) => {
                 console.log(error);
@@ -49,10 +48,7 @@ function FromMovie(props: Props) {
 
         });
     };
-
     console.log(errors);
-
-
     const convertBase64 = async (file: any) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -81,16 +77,16 @@ function FromMovie(props: Props) {
                         <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
                             onChange={onChangeIMG}
                         />
-                        {errors.moviesName && <p className="f-danger text text-align-left" > ⚠ Lổi hình ảnh</p>}
-                        <input style={{ display: "none" }} type="text" {...register("picture", { required: false })} />
+                        {errors.picture && <p className="f-danger text text-align-left" > ⚠ Lổi hình ảnh</p>}
+                        <input style={{ display: "none" }} value={picture.picture || ""} type="text" {...register("picture", { minLength: 100, required: true })} />
                         <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
                         {errors.groupCode && <p className="f-danger text text-align-left" > ⚠ Lổi Mã nhóm</p>}
                         <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />
                         {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày ra mắt</p>}
                         <input type="text" defaultValue={10} placeholder="Đánh giá" {...register("rating", { maxLength: 3, required: true })} />
-                        {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi ngày đánh giá</p>}
+                        {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi  đánh giá</p>}
                         <textarea placeholder="Nội dung" rows={5} className="described" {...register("described", { required: true })} />
-                        {errors.described && <p className="f-danger text text-align-left" > ⚠ Lổi ngày bình luận</p>}
+                        {errors.described && <p className="f-danger text text-align-left" > ⚠ Lổi  bình luận</p>}
                         <input type="submit" value="Hoàn tất" ></input>
                     </form>
                 </div>
@@ -105,11 +101,11 @@ function FromMovie(props: Props) {
 export default FromMovie;
 
 export interface Props {
-    onOpenCreatePopup(event: boolean): void ,
-    stateFormCreated( movies : MovieTypeCreate ) : void
+    onOpenCreatePopup(event: boolean): void,
+    stateFormCreated(movies: MovieTypeCreate): void
 }
 
 
 export interface picture {
-    picture: string , 
+    picture: string,
 }
