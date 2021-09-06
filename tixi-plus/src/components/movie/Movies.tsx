@@ -9,7 +9,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 function Movies(props: Props) {
     const classes = styleGrid();
     const matches = useMediaQuery('(max-width: 768px)');
-
     const sizeGird = React.useMemo(() =>{
         if(matches == false) {
             return 2;
