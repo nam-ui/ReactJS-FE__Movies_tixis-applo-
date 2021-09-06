@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/Header'
 import { UserType } from '../models/UserType'
 
 function Pages404() {
@@ -17,12 +16,11 @@ function Pages404() {
     return (
         <React.Fragment>
             <header style={{ minHeight: "auto", backgroundImage: "none" }}>
-                <Header user={account} />
                 <div id="main">
                     <div className="fof">
                         <h1 style={{ textDecoration: "none" }}>Error 404</h1>
                         <div>
-                            <a href="/" style={{ color: " white", textDecoration: "none" , fontWeight:700 }}> GO HOME </a>
+                            <a href="/" style={{ color: " white", textDecoration: "none", fontWeight: 700 }}> GO HOME </a>
                         </div>
                     </div>
                 </div>

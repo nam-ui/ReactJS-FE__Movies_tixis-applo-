@@ -8,6 +8,7 @@ import PopupMovieMaster from '../components/master-movie/PopupMovieMaster';
 import Header from '../components/Header';
 import { UserType } from '../models/UserType';
 import Pages404 from './Pages404';
+import { MovieTypeCreate } from '../models/MovieType';
 function MasterMovie() {
     const [account, setAccount] = React.useState<UserType>({
         _id: '',
@@ -20,10 +21,12 @@ function MasterMovie() {
     const [isOpenPopupUpdateMovie, setIsOpenPopupUpdateMovie] = React.useState(false)
     const [isOpenMovie, setIsOpenMovie] = React.useState(true)
     const [idFindMovie, setIdFindMovie] = React.useState("")
+    const [formStateMovie, setFormStateMovie] = React.useState<MovieTypeCreate>({ rating: 10 })
     React.useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
-    }, [])
+    }, [formStateMovie])
+
     return (
         <React.Fragment>
             <header style={{ minHeight: "auto", backgroundImage: "none" }}>
@@ -36,13 +39,16 @@ function MasterMovie() {
                             <div id="container-relative">
                                 <CssBaseline />
                                 <a id="btn-open-popup-movie-create" href="#" onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </a>
-                                <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} />
-                                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }}  stateFormCreated={(movies) =>{ console.log(movies) ;
-                                }}  />}
-                                {isOpenPopupUpdateMovie === true && <PopupMovieMaster onClickOpenDetailsRoom={(statusOpen) => {
+                                <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} stateFormCreated={formStateMovie} />
+                                {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} stateFormCreated={(movies) => {
+                                    setFormStateMovie(movies);
+                                }} />}
+                                {isOpenPopupUpdateMovie === true && <PopupMovieMaster onChangeUpdate={(status) => setIdFindMovie(status) } onClickOpenDetailsRoom={(statusOpen) => {
                                     setIsOpenPopupUpdateMovie(statusOpen)
                                     setIsOpenMovie(false)
-                                }}
+                                }
+                                    
+                                }
                                     idPropMovie={idFindMovie}
                                 />}
                             </div>

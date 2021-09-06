@@ -19,6 +19,7 @@ function MovieMaster(props: Props) {
                     _id: props.propMovie.id
                 }
             })
+            props.onRemoveMovie('props.propMovie.moviesName')
         }
     }
     const matches = useMediaQuery('(max-width: 768px)');
@@ -65,8 +66,10 @@ function MovieMaster(props: Props) {
 
 export default MovieMaster;
 
+
 export interface Props {
     onClickOpenDetailsMovie(isOpen: boolean): void,
     onChangeId(_id: string): void,
-    propMovie: MovieType
+    propMovie: MovieType,
+    onRemoveMovie(_id: string): void,
 }

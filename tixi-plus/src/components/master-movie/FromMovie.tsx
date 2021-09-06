@@ -32,9 +32,7 @@ function FromMovie(props: Props) {
             rating: parseInt(formStateMovie.rating.toString())
         },
         onCompleted: ({ movies }) => {
-            console.log(movies);
             props.stateFormCreated(movies)
-
         }
     });
     const onSubmit = async (movie: MovieTypeCreate) => {
@@ -70,15 +68,16 @@ function FromMovie(props: Props) {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input type="text" placeholder="Tên phim" {...register("moviesName", { maxLength: 350, required: true })} />
                         {errors.moviesName && <p className="f-danger text text-align-left" > ⚠ Lổi tên phim</p>}
-                        <input type="text" placeholder="Bí danh" {...register("aliases", { maxLength: 300 })} />
+                        <input type="text" placeholder="Bí danh" {...register("aliases", { maxLength: 300, required: true })} />
                         {errors.aliases && <p className="f-danger text text-align-left" > ⚠ Lổi bí danh</p>}
-                        <input type="text" placeholder="Trailer" {...register("trailer", { required: true })} />
-                        {errors.trailer && <p className="f-danger text text-align-left" > ⚠ Lổi trailer</p>}
+                        <input type="text" placeholder="Trailer" {...register("trailer", { minLength: 10, required: true })} />
+                        {errors.trailer && <p className="f-danger text text-align-left" > ⚠ Lổi trailer </p>}
                         <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
                             onChange={onChangeIMG}
+
                         />
+                        <input style={{ display: "none" }} value={picture.picture} defaultValue={picture.picture} accept="image/*" type="text" {...register("picture", { required: false })} />
                         {errors.picture && <p className="f-danger text text-align-left" > ⚠ Lổi hình ảnh</p>}
-                        <input style={{ display: "none" }} value={picture.picture || ""} type="text" {...register("picture", { minLength: 100, required: true })} />
                         <input type="text" placeholder="Mã nhóm" {...register("groupCode", { required: true })} />
                         {errors.groupCode && <p className="f-danger text text-align-left" > ⚠ Lổi Mã nhóm</p>}
                         <input type="datetime-local" placeholder="Ngày ra mắt" {...register("launchDate", { required: true })} />

@@ -30,14 +30,15 @@ function PopupMovieMaster(props: Props) {
                 moviesName: movie.moviesName,
                 aliases: movie.aliases,
                 trailer: movie.trailer,
-                picture: movie.picture,
+                picture: picture.picture,
                 described: movie.described,
                 groupCode: movie.groupCode,
                 launchDate: movie.launchDate,
-                rating: movie.rating,
+                rating: parseInt(movie.rating.toString()),
             }
         })
-        historry.replace('/master/movie');
+        // props.onChangeUpdate(mutationMovie.data._id)
+
         props.onClickOpenDetailsRoom(isOpenPopupUpdateMovie)
     }
     const [isOpenPopupUpdateMovie, setIsOpenPopupUpdateMovie] = React.useState(false)
@@ -56,9 +57,6 @@ function PopupMovieMaster(props: Props) {
         setPicture({ picture: `${base64}` })
     };
 
-    React.useEffect(() => {
-
-    }, [])
     const onLaunhDate = async (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(data.movie.launchDate);
         console.log(event.target.value);
@@ -67,6 +65,8 @@ function PopupMovieMaster(props: Props) {
         const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 16)
         return timeNow.toString()
     }
+    console.log(errors);
+
     return (
         <React.Fragment>
             <div className="mark" >
@@ -74,7 +74,7 @@ function PopupMovieMaster(props: Props) {
                     <div className="popup-movie-detail-master">
                         <div className="popup-movie-img">
                             <img src={picture.picture === `` ? data.movie.picture : picture.picture} alt="poster-img" />
-                            <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
+                            <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: false })}
                                 onChange={onChangeIMG}
                             />
                         </div>
@@ -91,7 +91,8 @@ function PopupMovieMaster(props: Props) {
                                 <TextField type="datetime-local" style={{ float: "left", margin: "0px 0 10px 0" }} variant="outlined" defaultValue={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}
                                     onChange={onLaunhDate}
                                 />
-                                <input type="datetime-local" style={{ display: "none" }} value={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })}  onChange={onLaunhDate}/>
+                                <input style={{ display: "none" }} value={picture.picture} defaultValue={picture.picture} accept="image/*" type="text" {...register("picture", { required: false })} />
+                                <input type="datetime-local" style={{ display: "none" }} value={setTime(data.movie.launchDate)} {...register("launchDate", { required: true })} onChange={onLaunhDate} />
                                 {errors.launchDate && <p className="f-danger text text-align-left" > ⚠ Lổi ngày chiếu</p>}
                                 <input type="number" className="movie-rating" defaultValue={data.movie.rating} placeholder="Đánh giá" {...register("rating", { max: 10, min: 1, maxLength: 2, required: true })} />
                                 {errors.rating && <p className="f-danger text text-align-left" > ⚠ Lổi đánh giá </p>}
@@ -113,7 +114,8 @@ function PopupMovieMaster(props: Props) {
 export default PopupMovieMaster
 export interface Props {
     onClickOpenDetailsRoom(isOpen: boolean): void,
-    idPropMovie: string
+    idPropMovie: string,
+    onChangeUpdate(_id: string): void
 }
 export interface picture {
     picture: string

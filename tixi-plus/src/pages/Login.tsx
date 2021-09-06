@@ -48,6 +48,7 @@ function Login() {
         }
     });
 
+    const [showPass , setShowPass] = React.useState('password')
 
     const onSubmit = async (user: UserType) => {
         console.log(user);
@@ -82,8 +83,13 @@ function Login() {
                     </h1>
                     <h3>Đăng nhập để được nhiều ưu đãi, mua vé và bảo mật thông tin!</h3>
                     <input type="text" placeholder="Email hoặc số điện thoại" {...register("username", { min: 20, required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i })} />
-                    <input type="password" placeholder="Mật khẩu"{...register("password", { min: 8, required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/i })} />
+                    <input type={showPass} placeholder="Mật khẩu"{...register("password", { min: 8, required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/i })} />
                     {isLoginError === true ? <p className="color-danger"> Tài Khoản hoặc Mật Khẩu sai </p> : null}
+                    {/* <input type="checkbox" onChange={(event) =>{
+                        console.log(event.target.value);
+                        
+                        setShowPass('text')
+                        }} checked  /> <span></span> */}
                     <input type="submit" value="Đăng nhập" />
                 </form>
             </div>

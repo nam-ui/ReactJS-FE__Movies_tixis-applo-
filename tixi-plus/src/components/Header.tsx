@@ -35,10 +35,11 @@ function Header(props: Props) {
             const findMovieElement = (
                 <React.Fragment>
                     { findMovie.map((movie: MovieType) => {
-                        return <li key={movie.id}> <a href={`http://localhost:3000/movie/${movie.id}`}> {movie.moviesName} </a> </li>
+                        return <li key={movie.id}> <a  href={`http://localhost:3000/movie/${movie.id}`}> {movie.moviesName} </a> </li>
                     })}
                 </ React.Fragment>
             )
+            ReactDOM.render(findMovieElement, document.getElementById('menu-search-lv-1'));
         }
     })
     const onSearchKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -132,7 +133,7 @@ function Header(props: Props) {
                             <ul className="nav-feature">
                                 <li>
                                     <div id="text-search-popup" className="menu-search-relative">
-                                        <input onKeyDown={onSearchKeyUp} onChange={onSearchChangge} type="text" placeholder="Tìm kiếm... " />
+                                        <input onKeyDown={onSearchKeyUp} onChange={onSearchChangge} type="text" placeholder="Tìm kiếm... "  />
                                         <div id="menu-search">
                                             <ul id="menu-search-lv-1">
 
