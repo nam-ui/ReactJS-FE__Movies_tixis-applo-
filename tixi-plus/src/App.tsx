@@ -12,7 +12,7 @@ import DetailMovie from './pages/DetailMovie';
 import UploadFiles from './pages/UploadFiles';
 
 const client = new ApolloClient({
-  uri: `http://localhost:5030/graphql `,
+  uri: `https://tixi-movies.herokuapp.com/graphql `,
   cache: new InMemoryCache(),
 })
 

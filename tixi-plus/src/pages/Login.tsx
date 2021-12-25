@@ -89,9 +89,11 @@ function Login() {
                         console.log(event.target.value);
                         
                         setShowPass('text')
-                        }} checked  /> <span></span> */}
+                    }} checked  /> <span></span> */}
+                    <h3>Demon account admin <br/>Username: namnam@gmail.com <br/>Password: 123456Aa </h3>
                     <input type="submit" value="Đăng nhập" />
                 </form>
+
             </div>
         </React.Fragment>
     )
