@@ -18,10 +18,10 @@ function Header(props: Props) {
     }
     const matches = useMediaQuery('(max-width: 768px)');
     const menu = React.useMemo(() => {
-        if (matches === false) {
+        if (matches===false) {
             return false;
         }
-        if (matches === true) {
+        if (matches===true) {
             return true;
         }
     }, [matches])
@@ -43,7 +43,7 @@ function Header(props: Props) {
         }
     })
     const onSearchKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === "Enter") {
+        if (event.code==="Enter") {
             Find()
         }
 
@@ -58,18 +58,18 @@ function Header(props: Props) {
         let element = (
             <a href={'/login'}> ĐĂNG NHẬP </a>
         );
-        if (props.user.role === 'user') {
+        if (props.user.role==='user') {
             element = (
-                <a className="sign-in-setting-focus" href={'/'}> {props.user.username}
+                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
                     <ul className="sign-in-setting">
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
                     </ul>
                 </a>
             )
         }
-        if (props.user.role === 'admin') {
+        if (props.user.role==='admin') {
             element = (
-                <a className="sign-in-setting-focus" href={'/'}> {props.user.username}
+                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
                     <ul className="sign-in-setting">
                         <li > <a href="/master/movie">PHIM</a> </li>
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
@@ -78,9 +78,9 @@ function Header(props: Props) {
             )
         }
         ReactDOM.render(element, document.getElementById('login-user'));
-    },)
+    }, [props, menu])
 
-
+    console.log(KeyboardEvent);
 
 
     return (

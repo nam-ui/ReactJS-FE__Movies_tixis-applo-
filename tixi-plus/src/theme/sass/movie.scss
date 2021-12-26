@@ -143,12 +143,13 @@ header {
     z-index: 1;
 }
 
-.master-movie-btn>a:hover {
+.master-movie-btn>button:hover {
     background-color: $yellow;
     color: $dark;
+
 }
 
-.master-movie-btn>a {
+.master-movie-btn> button {
     color: $white;
     border-radius: 25px;
     border: 2px solid $yellow;
@@ -159,6 +160,7 @@ header {
     display: grid;
     align-items: center;
     text-decoration: none;
+    background-color: transparent;
 }
 
 .box-master-hover-mark {

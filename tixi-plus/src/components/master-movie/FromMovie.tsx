@@ -57,6 +57,7 @@ function FromMovie(props: Props) {
         const file: File = (target.files as FileList)[0];
         const base64 = await convertBase64(file);
         setPicture({ picture: `${base64}` })
+        console.log(picture);
     };
     return (
         <React.Fragment>
@@ -71,7 +72,6 @@ function FromMovie(props: Props) {
                         {errors.trailer && <p className="f-danger text text-align-left" > ⚠ Lổi trailer </p>}
                         <TextField label="picture" type="file" InputLabelProps={{ shrink: true, }} variant="outlined" {...register("picture", { required: true })}
                             onChange={onChangeIMG}
-
                         />
                         <input style={{ display: "none" }} value={picture.picture} defaultValue={picture.picture} accept="image/*" type="text" {...register("picture", { required: false })} />
                         {errors.picture && <p className="f-danger text text-align-left" > ⚠ Lổi hình ảnh</p>}

@@ -23,11 +23,15 @@ function DetailMovie() {
     React.useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
-    }, [account])
+    }, [])
 
     const time = (time: any) => {
-        const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 4)
-        return timeNow
+        try {
+           return  new Date(parseInt(time.toString())).toISOString().slice(0, 4);
+        } catch (error) {
+            console.log(time);
+            return 2020;
+        }
     }
 
     const [isOpenVideo, setIsOpenvideo] = React.useState(false)
@@ -49,6 +53,9 @@ function DetailMovie() {
             })
         }
     }, [matches])
+
+
+
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>error...</p>

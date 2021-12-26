@@ -6,8 +6,12 @@ import { MovieType } from '../../models/MovieType'
 
 function Movie(props: Props) {
     const time = (time: any) => {
-        const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 4)
-        return timeNow
+        try {
+           return  new Date(parseInt(time.toString())).toISOString().slice(0, 4);
+        } catch (error) {
+            console.log(time);
+            return 2020;
+        }
     }
     const matches = useMediaQuery('(max-width: 768px)');
     const [mobileStyle, setMobileStyle] = React.useState({})

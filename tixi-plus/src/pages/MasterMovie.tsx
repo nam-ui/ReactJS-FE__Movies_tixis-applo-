@@ -22,13 +22,16 @@ function MasterMovie() {
     const [isOpenMovie, setIsOpenMovie] = React.useState(true)
     const [idFindMovie, setIdFindMovie] = React.useState("")
     const [formStateMovie, setFormStateMovie] = React.useState<MovieTypeCreate>({ rating: 10 })
+
+
+    
     React.useEffect(() => {
-        const funcUser = ( ) =>{
+        function funcUser( ) {
             const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
             return setAccount(user);
         }
         funcUser();
-    }, [formStateMovie,account])
+    }, [formStateMovie])
     console.log(isOpenMovie);
     return (
         <React.Fragment>
@@ -41,7 +44,7 @@ function MasterMovie() {
                         <main>
                             <div id="container-relative">
                                 <CssBaseline />
-                                <button id="btn-open-popup-movie-create"  onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </button>
+                                <button style={{  background: "transparent" }} id="btn-open-popup-movie-create"  onClick={() => { setIsOpenCreateMovie(!isOpenCreateMovie) }} > Create Movie </button>
                                 <MoviesMaster onChangeId={(id) => setIdFindMovie(id)} onClickOpenDetailsMovie={(statusOpen) => setIsOpenPopupUpdateMovie(statusOpen)} stateFormCreated={formStateMovie} />
                                 {isOpenCreateMovie === true && <FormCreateMovie onOpenCreatePopup={(event) => { setIsOpenCreateMovie(event) }} stateFormCreated={(movies) => {
                                     setFormStateMovie(movies);
