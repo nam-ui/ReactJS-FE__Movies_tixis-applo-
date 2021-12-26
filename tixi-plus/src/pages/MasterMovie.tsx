@@ -23,12 +23,13 @@ function MasterMovie() {
     const [idFindMovie, setIdFindMovie] = React.useState("")
     const [formStateMovie, setFormStateMovie] = React.useState<MovieTypeCreate>({ rating: 10 })
     React.useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
-         return setAccount(user);
-    }, [formStateMovie])
+        const funcUser = ( ) =>{
+            const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
+            return setAccount(user);
+        }
+        funcUser();
+    }, [formStateMovie,account])
     console.log(isOpenMovie);
-    
-
     return (
         <React.Fragment>
             <header style={{ minHeight: "auto", backgroundImage: "none" }}>

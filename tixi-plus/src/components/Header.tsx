@@ -78,7 +78,10 @@ function Header(props: Props) {
             )
         }
         ReactDOM.render(element, document.getElementById('login-user'));
-    }, [props, menu])
+    },)
+
+
+
 
     return (
         <React.Fragment>

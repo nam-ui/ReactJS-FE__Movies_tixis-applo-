@@ -24,7 +24,7 @@ function Login() {
                 return error.message;
             });
         })
-    }, [])
+    }, [ACTION_LOGIN])
 
     const [formState, setFormState] = useState<UserType>({
         _id: "",

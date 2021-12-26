@@ -23,7 +23,7 @@ function DetailMovie() {
     React.useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
-    }, [])
+    }, [account])
 
     const time = (time: any) => {
         const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 4)
@@ -49,9 +49,6 @@ function DetailMovie() {
             })
         }
     }, [matches])
-
-
-
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>error...</p>
