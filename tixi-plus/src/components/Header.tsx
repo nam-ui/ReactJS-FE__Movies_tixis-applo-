@@ -1,13 +1,13 @@
-import React, { KeyboardEvent } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import Logo from '../theme/img/logo.png'
-import { BiSearch, BiWorld, AiOutlineClose, HiMenu } from 'react-icons/all'
-import { UserType } from '../models/UserType'
-import ReactDOM from 'react-dom';
-import { useMediaQuery } from '@material-ui/core'
-import { FIND_MOVIES } from '../graphql/Movie'
 import { useMutation } from '@apollo/client'
+import { useMediaQuery } from '@material-ui/core'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AiOutlineClose, BiWorld, HiMenu } from 'react-icons/all'
+import { Link, useHistory } from 'react-router-dom'
+import { FIND_MOVIES } from '../graphql/Movie'
 import { MovieType } from '../models/MovieType'
+import { UserType } from '../models/UserType'
+import Logo from '../theme/img/logo.png'
 
 function Header(props: Props) {
     const [search, setSearch] = React.useState("");
@@ -18,10 +18,10 @@ function Header(props: Props) {
     }
     const matches = useMediaQuery('(max-width: 768px)');
     const menu = React.useMemo(() => {
-        if (matches == false) {
+        if (matches === false) {
             return false;
         }
-        if (matches == true) {
+        if (matches === true) {
             return true;
         }
     }, [matches])
@@ -43,7 +43,7 @@ function Header(props: Props) {
         }
     })
     const onSearchKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.code == "Enter") {
+        if (event.code === "Enter") {
             Find()
         }
 
@@ -58,18 +58,18 @@ function Header(props: Props) {
         let element = (
             <a href={'/login'}> ĐĂNG NHẬP </a>
         );
-        if (props.user.role == 'user') {
+        if (props.user.role === 'user') {
             element = (
-                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
+                <a className="sign-in-setting-focus" href={'/'}> {props.user.username}
                     <ul className="sign-in-setting">
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
                     </ul>
                 </a>
             )
         }
-        if (props.user.role == 'admin') {
+        if (props.user.role === 'admin') {
             element = (
-                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
+                <a className="sign-in-setting-focus" href={'/'}> {props.user.username}
                     <ul className="sign-in-setting">
                         <li > <a href="/master/movie">PHIM</a> </li>
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
@@ -95,10 +95,10 @@ function Header(props: Props) {
                                 </div>
                                 <div id="header-menu-0">
                                     <ul className="menu-lv-1">
-                                        <li> <a href="#">Lịch Chiếu</a></li>
-                                        <li> <a href="#">Cụm rạp</a></li>
-                                        <li> <a href="#">Tin Tức</a></li>
-                                        <li> <a href="#">Ứng dụng</a> </li>
+                                        <li> <a href="/">Lịch Chiếu</a></li>
+                                        <li> <a href="/">Cụm rạp</a></li>
+                                        <li> <a href="/">Tin Tức</a></li>
+                                        <li> <a href="/">Ứng dụng</a> </li>
                                     </ul>
                                 </div>
                                 <div id="header-feature">
@@ -123,10 +123,10 @@ function Header(props: Props) {
                     ) : <React.Fragment>
                         <div id="header-menu-0">
                             <ul className="menu-lv-1">
-                                <li> <a href="#">Lịch Chiếu</a></li>
-                                <li> <a href="#">Cụm rạp</a></li>
-                                <li> <a href="#">Tin Tức</a></li>
-                                <li> <a href="#">Ứng dụng</a> </li>
+                                <li> <a href="/">Lịch Chiếu</a></li>
+                                <li> <a href="/">Cụm rạp</a></li>
+                                <li> <a href="/">Tin Tức</a></li>
+                                <li> <a href="/">Ứng dụng</a> </li>
                             </ul>
                         </div>
                         <div id="header-feature">

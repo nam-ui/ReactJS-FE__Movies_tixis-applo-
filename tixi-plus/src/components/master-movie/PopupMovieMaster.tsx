@@ -1,13 +1,10 @@
-import React from 'react'
-import { useForm } from "react-hook-form";
-import { MovieTypeCreate } from '../../models/MovieType';
-import { IoCloseSharp } from 'react-icons/all'
 import { useMutation, useQuery } from '@apollo/client';
-import { movieQuery } from '../../graphql/Movie';
-import { UPDATE_MOVIE } from '../../graphql/Movie'
-import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
-import moment from 'moment'
+import React from 'react';
+import { useForm } from "react-hook-form";
+import { IoCloseSharp } from 'react-icons/all';
+import { movieQuery, UPDATE_MOVIE } from '../../graphql/Movie';
+import { MovieTypeCreate } from '../../models/MovieType';
 
 
 function PopupMovieMaster(props: Props) {
@@ -18,7 +15,6 @@ function PopupMovieMaster(props: Props) {
     })
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [updateMovie, mutationMovie] = useMutation(UPDATE_MOVIE);
-    const historry = useHistory();
     const [picture, setPicture] = React.useState<picture>({
         picture: ``
     })
@@ -65,7 +61,7 @@ function PopupMovieMaster(props: Props) {
         const timeNow = new Date(parseInt(time.toString())).toISOString().slice(0, 16)
         return timeNow.toString()
     }
-    console.log(errors);
+    console.log(error,mutationMovie);
 
     return (
         <React.Fragment>

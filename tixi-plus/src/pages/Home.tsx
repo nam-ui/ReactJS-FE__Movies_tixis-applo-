@@ -22,7 +22,7 @@ function Home() {
     React.useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
-    }, [])
+    })
     const paramsPageURL = useParams<PageURLTYPE>();
     const existedParamsPage = paramsPageURL.page ?? 1
     const [state, setState] = React.useState<MoviesPagination>({

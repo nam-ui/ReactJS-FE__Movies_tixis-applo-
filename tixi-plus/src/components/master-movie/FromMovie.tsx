@@ -1,19 +1,16 @@
-import React, { FC } from 'react'
-import { useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client';
+import { TextField } from '@material-ui/core';
+import React from 'react';
 // import { compareAsc, format } from 'date-fns'
 import { useForm } from "react-hook-form";
-// ANCHOR model
-import { MovieTypeCreate } from '../../models/MovieType'
+import { IoCloseSharp } from 'react-icons/all';
 import { ADD_MOVIE } from '../../graphql/Movie';
-import { IoCloseSharp } from 'react-icons/all'
-import { useHistory, useLocation } from 'react-router-dom';
-import { TextField } from '@material-ui/core';
+// ANCHOR model
+import { MovieTypeCreate } from '../../models/MovieType';
 // ANCHOR files
 function FromMovie(props: Props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // TODO event create
-    const historry = useHistory();
-    const location = useLocation();
     const [picture, setPicture] = React.useState<picture>({
         picture: ``
     })

@@ -13,28 +13,28 @@ function MovieMaster(props: Props) {
     const classes = styleGrid();
     const onCheck = () => {
         let confix = window.confirm(`Bạn muốn ${props.propMovie.moviesName}`);
-        if (confix == true) {
+        if (confix === true) {
             deleteMovie({
                 variables: {
                     _id: props.propMovie.id
                 }
             })
             props.onRemoveMovie('props.propMovie.moviesName')
+            setIsOpenPopupUpdateMovie(isOpenPopupUpdateMovie);
         }
     }
     const matches = useMediaQuery('(max-width: 768px)');
 
     const sizeGird = React.useMemo(() => {
-        if (matches == false) {
+        if (matches === false) {
             return 2;
         }
-        if (matches == true) {
+        if (matches === true) {
             return 4;
         }
     }, [matches])
 
-
-
+    console.log(loading,error);
 
     return (
         <Grid item xs={sizeGird || 2} className={classes.rootChild}  >
@@ -43,14 +43,14 @@ function MovieMaster(props: Props) {
                     <img className="image-master" alt={props.propMovie.moviesName || "Postermovie"} src={props.propMovie.picture} />
                     <div className="box-master-hover-setting">
                         <div className="master-movie-btn">
-                            <a className="master-movie-btn-details" onClick={async (even) => {
+                            <button className="master-movie-btn-details" onClick={async (even) => {
                                 props.onChangeId(props.propMovie.id);
                                 await props.onClickOpenDetailsMovie(!isOpenPopupUpdateMovie);
                             }}
-                            > Details </a>
-                            <a href="#" className="master-movie-btn-remove" onClick={(event) => {
+                            > Details </button>
+                            <button className="master-movie-btn-remove" onClick={(event) => {
                                 onCheck()
-                            }}   >Remove </a>
+                            }}   >Remove </button>
                         </div>
                     </div>
                     <div className="box-master-hover-mark">

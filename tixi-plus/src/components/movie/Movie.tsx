@@ -12,10 +12,10 @@ function Movie(props: Props) {
     const matches = useMediaQuery('(max-width: 768px)');
     const [mobileStyle, setMobileStyle] = React.useState({})
     const sizeGird = React.useMemo(() => {
-        if (matches == false) {
+        if (matches === false) {
             return 3;
         }
-        if (matches == true) {
+        if (matches === true) {
             setMobileStyle({
                 padding: "10px 2.5px"
             })
@@ -27,7 +27,7 @@ function Movie(props: Props) {
             <div className={"movie-box"} style={mobileStyle} >
                 <div className={"movie-poster"}>
                     <Link to={`/movie/${props.Movie.id}`}>
-                        <img src={props.Movie.picture} alt="image" />
+                        <img src={props.Movie.picture} alt="Pic_product" />
                     </Link>
                 </div>
                 <div className={"movie-content"}>

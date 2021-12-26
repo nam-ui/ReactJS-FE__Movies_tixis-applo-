@@ -19,7 +19,9 @@ function UploadFiles() {
         variables: {
             file
         },
-        onCompleted: ({ }) => {
+        onCompleted: () => {
+            console.log('====================================');
+            return  console.log('upload_FILE: ');
         }
     });
     const onSubmit = async () => {
@@ -40,6 +42,8 @@ function UploadFiles() {
         await setFile(file)
 
     };
+
+    console.log(useHistory,register,errors);
 
     return (
         <React.Fragment>

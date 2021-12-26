@@ -12,7 +12,7 @@ function Pages404() {
     React.useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
         setAccount(user)
-    }, [])
+    }, [account])
     return (
         <React.Fragment>
             <header style={{ minHeight: "auto", backgroundImage: "none" }}>

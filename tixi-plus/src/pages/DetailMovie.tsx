@@ -1,15 +1,15 @@
 import { useQuery } from '@apollo/client';
-import React, { useState } from 'react'
+import { useMediaQuery } from '@material-ui/core';
+import React from 'react';
 import { BiShareAlt } from 'react-icons/bi';
 import { FiClock } from 'react-icons/fi';
-import { useParams } from 'react-router-dom'
+import ReactPlayer from 'react-player';
+import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { movieQuery } from '../graphql/Movie';
 import { UserType } from '../models/UserType';
-import banner from '../theme/img/movie_details_bg.jpg'
-import ReactPlayer from 'react-player'
-import { useMediaQuery } from '@material-ui/core';
+import banner from '../theme/img/movie_details_bg.jpg';
 
 function DetailMovie() {
     const params = useParams<params>();
@@ -63,7 +63,7 @@ function DetailMovie() {
                 <Header user={account} />
                 <div id="header-detail-movie" >
                     <div id="poster-movie-detail">
-                        <a href="#" onClick={() => { setIsOpenvideo(!isOpenVideo) }} className="open-movie"></a>
+                        <button  onClick={() => { setIsOpenvideo(!isOpenVideo) }} className="open-movie"></button>
                         <img src={data.movie.picture} alt="poster-movie" />
                     </div>
                     <div id="information-movie-detail">
