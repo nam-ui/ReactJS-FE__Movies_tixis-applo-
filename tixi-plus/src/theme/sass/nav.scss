@@ -77,11 +77,16 @@ header{
                     border-radius: 50px;
                     position: relative;
                 }
-                >li:last-child > a {
+                >li:last-child > button {
                     text-decoration: none;
                     color: $yellow;
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                    width: 100%;
+                    height: 100%;
                 }
-                >li:last-child:hover > a {
+                >li:last-child:hover > button {
                     text-decoration: none;
                     color: $dark;
                 }

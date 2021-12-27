@@ -13,17 +13,14 @@ import banner from '../theme/img/movie_details_bg.jpg';
 
 function DetailMovie() {
     const params = useParams<params>();
-    const [account, setAccount] = React.useState<UserType>({
+    const [account, ] = React.useState<UserType>({
         _id: '',
         password: '',
         username: '',
         role: '',
         createdAt: new Date(Date.UTC(0, 0, 0, 0, 0, 0))
     })
-    React.useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
-        setAccount(user)
-    }, [])
+    const user = JSON.parse(localStorage.getItem('user') || JSON.stringify(account))
 
     const time = (time: any) => {
         try {
@@ -64,7 +61,7 @@ function DetailMovie() {
     return (
         <React.Fragment>
             <header style={{ backgroundImage: `url(${banner})` }} >
-                <Header user={account} />
+                <Header user={user} />
                 <div id="header-detail-movie" >
                     <div id="poster-movie-detail">
                         <button  onClick={() => { setIsOpenvideo(!isOpenVideo) }} className="open-movie"></button>

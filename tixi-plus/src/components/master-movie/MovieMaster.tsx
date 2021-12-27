@@ -33,6 +33,14 @@ function MovieMaster(props: Props) {
             return 4;
         }
     }, [matches])
+    try {
+        console.log(error,loading);
+    } catch (error) {
+        
+    }
+
+
+
     return (
         <Grid item xs={sizeGird || 2} className={classes.rootChild}  >
             <Paper className={classes.Paper}     >

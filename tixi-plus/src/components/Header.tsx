@@ -12,10 +12,7 @@ import Logo from '../theme/img/logo.png'
 function Header(props: Props) {
     const [search, setSearch] = React.useState("");
     const historry = useHistory();
-    const dangXuat = (user: UserType) => {
-        localStorage.setItem('user', "{}")
-        historry.replace('/')
-    }
+   
     const matches = useMediaQuery('(max-width: 768px)');
     const menu = React.useMemo(() => {
         if (matches===false) {
@@ -55,30 +52,36 @@ function Header(props: Props) {
 
 
     React.useEffect(() => {
+        const dangXuat = (user: UserType) => {
+            localStorage.setItem('user', "{}")
+            historry.replace('/')
+        }
+
+
         let element = (
             <a href={'/login'}> ĐĂNG NHẬP </a>
         );
         if (props.user.role==='user') {
             element = (
-                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
+                <button className="sign-in-setting-focus" > {props.user.username}
                     <ul className="sign-in-setting">
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
                     </ul>
-                </a>
+                </button>
             )
         }
         if (props.user.role==='admin') {
             element = (
-                <a className="sign-in-setting-focus" href={'#'}> {props.user.username}
+                <button className="sign-in-setting-focus" > {props.user.username}
                     <ul className="sign-in-setting">
                         <li > <a href="/master/movie">PHIM</a> </li>
                         <li><a onClick={() => { dangXuat(props.user) }} href="/">ĐĂNG XUẤT</a> </li>
                     </ul>
-                </a>
+                </button>
             )
         }
         ReactDOM.render(element, document.getElementById('login-user'));
-    }, [props, menu])
+    }, [props, menu,historry])
 
     console.log(KeyboardEvent);
 
