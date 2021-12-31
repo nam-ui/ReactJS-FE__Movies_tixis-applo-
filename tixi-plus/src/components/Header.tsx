@@ -32,7 +32,7 @@ function Header(props: Props) {
             const findMovieElement = (
                 <React.Fragment>
                     { findMovie.map((movie: MovieType) => {
-                        return <li key={movie.id}> <a  href={`http://localhost:3000/movie/${movie.id}`}> {movie.moviesName} </a> </li>
+                        return <li key={movie.id}> <a  href={`${window.location.protocol}//${window.location.host}/movie/${movie.id}`}> {movie.moviesName} </a> </li>
                     })}
                 </ React.Fragment>
             )
