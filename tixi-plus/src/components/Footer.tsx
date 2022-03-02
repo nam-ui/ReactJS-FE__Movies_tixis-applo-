@@ -39,7 +39,8 @@ function Footer() {
             </div>
             <div className="container-footer-three">
                 <div className="footer-three" >
-                    <div className="footer-three-copyright">Copyright © 2021. All Rights Reserved By <a href="/">Nam Nam</a></div>
+                    {/* <div className="footer-three-copyright">Copyright © 2021. All Rights Reserved By <a href="/">Nam Nam</a></div> */}
+                    <div className="footer-three-copyright">Hello <a href="/">world</a></div>
                     <div>
                         <img src={card} alt="" />
                     </div>
